@@ -1,0 +1,25 @@
+xrun: 21.03-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun	21.03-s009: Started on Oct 12, 2023 at 09:06:19 CEST
+xrun
+	+compile
+	+sv
+	-f /home/student/jswiebocki/VDIC/.dvt/lab01example.build
+		-F lab01example/tb/tb.f
+			-F lab01example/tb/../../common/tinyalu/tinyalu.f
+				single_cycle.sv
+				three_cycle.sv
+				tinyalu.sv
+			tinyalu_tb.sv
+file: lab01example/tb/../../common/tinyalu/single_cycle.sv
+	module worklib.single_cycle:sv
+		errors: 0, warnings: 0
+file: lab01example/tb/../../common/tinyalu/three_cycle.sv
+	module worklib.three_cycle:sv
+		errors: 0, warnings: 0
+file: lab01example/tb/../../common/tinyalu/tinyalu.sv
+	module worklib.tinyalu:sv
+		errors: 0, warnings: 0
+file: lab01example/tb/tinyalu_tb.sv
+	module worklib.top:sv
+		errors: 0, warnings: 0
+TOOL:	xrun	21.03-s009: Exiting on Oct 12, 2023 at 09:06:19 CEST  (total: 00:00:00)
