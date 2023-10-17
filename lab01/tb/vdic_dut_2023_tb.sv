@@ -17,24 +17,23 @@
  2023-10-12 JS, AGH UST - Testbench create
  */
 module top;
-
+	
 //------------------------------------------------------------------------------
 // Type definitions
 //------------------------------------------------------------------------------
 
 typedef enum bit[2:0] {
-    no_op  = 3'b000,
-    add_op = 3'b001,
-    and_op = 3'b010,
-    xor_op = 3'b011,
-    mul_op = 3'b100,
-    rst_op = 3'b111
+    RST_OP      = 3'b000,
+    CORR_IN     = 3'b001,
+    INCORR_IN   = 3'b010
 } operation_t;
+
 
 typedef enum bit {
     TEST_PASSED,
     TEST_FAILED
 } test_result_t;
+
 
 typedef enum {
     COLOR_BOLD_BLACK_ON_GREEN,
@@ -49,16 +48,27 @@ typedef enum {
 // Local variables
 //------------------------------------------------------------------------------
 
-bit           [7:0]  A;
-bit           [7:0]  B;
-bit                  clk;
-bit                  reset_n;
-wire          [2:0]  op;
-bit                  start;
-wire                 done;
-wire          [15:0] result;
+bit              	clk;
+bit              	rst_n;
+bit      	 [15:0] arg_a;
+bit         	    arg_a_parity;
+bit       	 [15:0] arg_b;
+bit              	arg_b_parity;
+bit              	req;
 
-operation_t          op_set;
+wire 			 	ack;
+wire      	 [31:0] result;
+wire             	result_parity;
+wire 			 	result_rdy;
+wire			 	arg_parity_error;
+
+bit      	 [31:0] result_expected;
+bit             	result_parity_expected;
+bit			 		arg_parity_error_expected;
+		         
+bit			  [2:0] op;	
+	
+operation_t         op_set;
 assign op = op_set;
 
 test_result_t        test_result = TEST_PASSED;
