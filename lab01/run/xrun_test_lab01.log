@@ -1,0 +1,442 @@
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xmvlog: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xrun: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xmelab: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xmelab: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xmelab: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xmelab: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xmelab: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xmelab: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+	Top level design units:
+		top
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+|
+xmsim: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+|
+xmsim: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE ahdlLib $CDSHOME/tools/dfII/samples/artist/ahdlLib
+|
+xmsim: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE bmslib $CDSHOME/tools/dfII/samples/artist/bmslib
+|
+xmsim: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE sample $CDSHOME/tools/dfII/samples/cdslib/sample
+|
+xmsim: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,5): cds.lib Invalid environment variable ''.
+DEFINE connectLib $IUSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+|
+xmsim: *W,DLCVAR (/cad/dk/PDK_CRN45GS_DGO_11_25/PDK/cds.lib,6): cds.lib Invalid environment variable ''.
+xcelium> source /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/xcelium/files/xmsimrc
+xcelium> source /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 300 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=33989 arg_b=63461 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 2156975929  received:   65460025. Expected result_parity: 1  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 840 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=21839 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 1431218865  received: 4294945457. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 1140 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=16080 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 1053802800  received: 4294951216. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 1280 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=32524 arg_b=60872 op_set=1 arg_a_parity=1 arg_b_parity=1
+Expected: 1979800928  received: 4143275360. Expected result_parity: 1  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 1400 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4294836225  received:          1. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 1540 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=25432 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected: 1666686120  received: 4294941864. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 1880 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=27866 arg_b=58037 op_set=1 arg_a_parity=1 arg_b_parity=1
+Expected: 1617259042  received: 4086000162. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 2860 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=38480 arg_b=34869 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 1341759120  received:  829726352. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 3340 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=39604 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 2595448140  received:      25932. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 3540 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=27387 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 1794807045  received: 4294939909. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 4040 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=34248 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 2244442680  received:      31288. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 4220 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=36589 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 2397860115  received:      28947. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 5960 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=82 arg_b=38608 op_set=1 arg_a_parity=1 arg_b_parity=1
+Expected:    3165856  received: 4292759200. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 7440 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=48661 arg_b=17230 op_set=1 arg_a_parity=1 arg_b_parity=1
+Expected:  838429030  received: 4004211046. Expected result_parity: 1  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 8040 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=30312 arg_b=62608 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected: 1897773696  received: 4206213760. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 8980 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=11913 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected:  780718455  received: 4294955383. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 10060 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=57100 arg_b=4885 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected:  278933500  received: 4253757436. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 11400 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4294836225  received:          1. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 13520 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=15050 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected:  986301750  received: 4294952246. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 13780 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=12813 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected:  839699955  received: 4294954483. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 13880 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=34607 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected: 2267969745  received:      30929. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 14600 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=62936 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4124510760  received:       2600. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 15500 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=12146 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected:  795988110  received: 4294955150. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 16900 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=40325 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 2642698875  received:      25211. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 17220 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4294836225  received:          1. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 17660 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=10163 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected:  666032205  received: 4294957133. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 18300 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=24023 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected: 1574347305  received: 4294943273. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 19740 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=11863 arg_b=33204 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected:  393899052  received: 3911412780. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+19990 Clock cycles elapsed: 1000
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 21340 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=32823 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 2151055305  received:      32713. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 21560 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=15983 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected: 1047445905  received: 4294951313. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 22120 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=49375 arg_b=7299 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected:  360388125  received: 4177008157. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 23720 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4294836225  received:          1. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 24020 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=24145 arg_b=57428 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 1386599060  received: 4099199636. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 24520 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=63177 arg_b=14730 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected:  930597210  received: 4260219226. Expected result_parity: 1  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 25500 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=46358 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 3038071530  received:      19178. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 26800 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=9094 arg_b=57938 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected:  526888172  received: 4225871084. Expected result_parity: 1  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 28180 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=7001 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected:  458810535  received: 4294960295. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 28360 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=17789 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected: 1165802115  received: 4294949507. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 28500 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=49165 arg_b=7331 op_set=1 arg_a_parity=1 arg_b_parity=1
+Expected:  360428615  received: 4174951495. Expected result_parity: 1  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 29480 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4294836225  received:          1. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 30240 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=21 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected:    1376235  received: 4294967275. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 30440 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4294836225  received:          1. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 31960 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=4745 arg_b=55909 op_set=1 arg_a_parity=1 arg_b_parity=1
+Expected:  265288205  received: 4249287181. Expected result_parity: 1  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 32860 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=52063 arg_b=1956 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected:  101835228  received: 4268614108. Expected result_parity: 1  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 33360 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=3371 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected:  220918485  received: 4294963925. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 33840 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=20521 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected: 1344843735  received: 4294946775. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 34320 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=43971 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 2881639485  received:      21565. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 34780 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=29470 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 1931316450  received: 4294937826. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 34880 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=50431 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 3304995585  received:      15105. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 35640 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=8643 arg_b=52610 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected:  454708230  received: 4183247878. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 36620 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=56681 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 3714589335  received:       8855. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 38240 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=52712 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 3454480920  received:      12824. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 38480 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=16597 arg_b=55497 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected:  921083709  received: 4128350013. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 38700 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=46742 arg_b=43120 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 2015515040  received:  421286304. Expected result_parity: 1  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+39990 Clock cycles elapsed: 2000
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 40440 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=4968 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected:  325577880  received: 4294962328. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 40580 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=56204 arg_b=48609 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 2732020236  received:  157962764. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 41600 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=8327 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected:  545709945  received: 4294958969. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 42360 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=58347 arg_b=46694 op_set=1 arg_a_parity=1 arg_b_parity=1
+Expected: 2724454818  received:  135455138. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 42560 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=24961 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 1635819135  received: 4294942335. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 42660 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=51921 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 3402642735  received:      13615. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 44640 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=8003 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected:  524476605  received: 4294959293. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 45400 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4294836225  received:          1. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 45640 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=4116 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected:  269742060  received: 4294963180. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 45740 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=20268 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 1328263380  received: 4294947028. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 45900 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=55769 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 3654821415  received:       9767. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 46280 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=16235 arg_b=59517 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected:  966258495  received: 4197248831. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 47760 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=28978 op_set=1 arg_a_parity=0 arg_b_parity=1
+Expected: 1899073230  received: 4294938318. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 49040 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=39293 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 2575066755  received:      26243. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 49780 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=65535 arg_b=65535 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected: 4294836225  received:          1. Expected result_parity: 0  received result_parity: 1. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 52800 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=4450 arg_b=45219 op_set=1 arg_a_parity=1 arg_b_parity=1
+Expected:  201224550  received: 4204556646. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 53280 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=8079 arg_b=51533 op_set=1 arg_a_parity=0 arg_b_parity=0
+Expected:  416335107  received: 4181837059. Expected result_parity: 1  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 53420 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=28235 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 1850380725  received: 4294939061. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+xmsim: *E,ASRTST (../tb/vdic_dut_2023_tb.sv,272): (time 53620 NS) Assertion top.tester.tester_main_blk.__assert_1 has failed 
+Test FAILED for arg_a=59403 arg_b=65535 op_set=1 arg_a_parity=1 arg_b_parity=0
+Expected: 3892975605  received:       6133. Expected result_parity: 0  received result_parity: 0. Expected arg_parity_error: 0  received arg_parity_error: 0 
+[1;30m[101m-----------------------------------
+----------- Test FAILED -----------
+-----------------------------------[0m
+
+Simulation complete via $finish(1) at time 55160 NS + 0
+../tb/vdic_dut_2023_tb.sv:284     $finish;
+xcelium> exit
+See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  top(top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_6a3029bf_41bc0a96.ucm
+  data               :  ./cov_work/scope/test/icc_6a3029bf_41bc0a96.ucd

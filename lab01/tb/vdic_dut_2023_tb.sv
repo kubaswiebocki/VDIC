@@ -23,9 +23,11 @@ module top;
 //------------------------------------------------------------------------------
 
 typedef enum bit[2:0] {
-    RST_OP      = 3'b000,
-    CORR_IN     = 3'b001,
-    INCORR_IN   = 3'b010
+    RST_OP      	  = 3'b000,
+    VALID_A_B		  = 3'b001,
+    INVALID_A_B  	  = 3'b010,
+    VALID_A_INVALID_B = 3'b011,
+    VALID_B_INVALID_A = 3'b100
 } operation_t;
 
 
@@ -77,7 +79,7 @@ test_result_t        test_result = TEST_PASSED;
 // DUT instantiation
 //------------------------------------------------------------------------------
 
-tinyalu DUT (.A, .B, .clk, .op, .reset_n, .start, .done, .result);
+vdic_dut_2023 DUT (.clk, .rst_n, .arg_a, .arg_a_parity, .arg_b, .arg_b_parity, .req, .ack, .result, .result_parity, .result_rdy, .arg_parity_error);
 
 //------------------------------------------------------------------------------
 // Clock generator
@@ -91,7 +93,9 @@ initial begin : clk_gen_blk
     end
 end
 
-// timestamp monitor
+//------------------------------------------------------------------------------
+// Timestamp monitor
+//------------------------------------------------------------------------------
 initial begin
     longint clk_counter;
     clk_counter = 0;
@@ -109,129 +113,181 @@ end
 
 //---------------------------------
 // Random data generation functions
+//---------------------------------
 
 function operation_t get_op();
     bit [2:0] op_choice;
     op_choice = 3'($random);
     case (op_choice)
-        3'b000 : return no_op;
-        3'b001 : return add_op;
-        3'b010 : return and_op;
-        3'b011 : return xor_op;
-        3'b100 : return mul_op;
-        3'b101 : return no_op;
-        3'b110 : return rst_op;
-        3'b111 : return rst_op;
+        3'b000 : return RST_OP;
+        3'b001 : return VALID_A_B;
+	    3'b010 : return INVALID_A_B;
+        3'b011 : return VALID_A_INVALID_B;
+        3'b100 : return VALID_B_INVALID_A;
+	    default : return RST_OP;
     endcase // case (op_choice)
 endfunction : get_op
 
 //---------------------------------
-function byte get_data();
+function shortint get_data();
 
     bit [1:0] zero_ones;
 
     zero_ones = 2'($random);
-
+	
     if (zero_ones == 2'b00)
-        return 8'h00;
+        return 16'h0000;
     else if (zero_ones == 2'b11)
-        return 8'hFF;
+        return 16'hFFFF;
     else
-        return 8'($random);
+        return 16'($random);
 endfunction : get_data
+
+//---------------------------------
+// Random data handling tasks
+//---------------------------------
+
+//Input data parity check
+task get_parity(
+		input bit [15:0] data,
+		input bit        data_valid,
+		
+		output bit       parity
+	);
+	
+	parity = ^data;
+	
+	if (data_valid)
+		parity = !parity;
+
+endtask : get_parity
+
+//Reset task
+task reset_mult();
+
+`ifdef DEBUG
+	$display("%0t DEBUG: reset_mult", $time);
+`endif
+	
+	req   	= 1'b0;
+	rst_n	= 1'b0;
+	
+	@(negedge clk);
+	rst_n	= 1'b1;
+	
+endtask : reset_mult
+
+//Calculate expected result
+task get_expected(
+		input bit [15:0]	arg_a,
+		input bit [15:0]	arg_b,
+		input operation_t	op_set,
+		
+		output bit [31:0]	result,
+		output bit			result_parity,
+		output bit			arg_parity_error
+	);
+
+`ifdef DEBUG
+	$display("%0t DEBUG: get_excepted(%0d,%0d)", $time, arg_a, arg_b);
+`endif
+	
+	case(op_set)
+		VALID_A_B:
+		begin
+			result				= arg_a * arg_b;
+			arg_parity_error	= 1'b0;
+			result_parity    	= ^result;
+		end
+		INVALID_A_B:
+		begin
+			result				= 32'b0;
+			arg_parity_error	= 1'b1;
+			result_parity    	= ^result;
+		end
+		VALID_A_INVALID_B:
+		begin
+			result				= 32'b0;
+			arg_parity_error	= 1'b1;
+			result_parity    	= ^result;
+		end
+		VALID_B_INVALID_A:
+		begin
+			result				= 32'b0;
+			arg_parity_error	= 1'b1;
+			result_parity    	= ^result;
+		end
+		default:
+		begin
+			$display("%0t INTERNAL ERROR. get_expected: unexpected case argument: %s", $time, op_set);
+			test_result = TEST_FAILED;
+		end
+	endcase
+endtask : get_expected
 
 //------------------------
 // Tester main
+//------------------------
 
 initial begin : tester
-    reset_alu();
+    reset_mult();
     repeat (1000) begin : tester_main_blk
         @(negedge clk);
         op_set = get_op();
-        A      = get_data();
-        B      = get_data();
-        start  = 1'b1;
+	    arg_a 	= get_data();
+	    arg_b 	= get_data();
         case (op_set) // handle the start signal
-            no_op: begin : case_no_op_blk
-                @(negedge clk);
-                start                             = 1'b0;
-            end
-            rst_op: begin : case_rst_op_blk
-                reset_alu();
-            end
+            RST_OP: begin: case_rst_op_blk
+	            reset_mult();
+	            continue;
+            end : case_rst_op_blk
+            VALID_A_B: begin: case_valid_a_b_blk
+	            get_parity(arg_a, 1'b0, arg_a_parity);
+	            get_parity(arg_b, 1'b0, arg_b_parity);
+            end : case_valid_a_b_blk
+            INVALID_A_B: begin: case_invalid_a_b_blk
+	            get_parity(arg_a, 1'b1, arg_a_parity);
+	            get_parity(arg_b, 1'b1, arg_b_parity);
+            end : case_invalid_a_b_blk
+            VALID_A_INVALID_B: begin: case_vd_a_ivd_b_blk
+	            get_parity(arg_a, 1'b0, arg_a_parity);
+	            get_parity(arg_b, 1'b1, arg_b_parity);
+            end : case_vd_a_ivd_b_blk
+            VALID_B_INVALID_A: begin: case_vd_b_ivd_a_blk
+	            get_parity(arg_a, 1'b1, arg_a_parity);
+	            get_parity(arg_b, 1'b0, arg_b_parity);
+            end : case_vd_b_ivd_a_blk
             default: begin : case_default_blk
-                wait(done);
-                @(negedge clk);
-                start                             = 1'b0;
-
-                //------------------------------------------------------------------------------
-                // temporary data check - scoreboard will do the job later
-                begin
-                    automatic bit [15:0] expected = get_expected(A, B, op_set);
-                    assert(result === expected) begin
-                        `ifdef DEBUG
-                        $display("Test passed for A=%0d B=%0d op_set=%0d", A, B, op);
-                        `endif
-                    end
-                    else begin
-                        $display("Test FAILED for A=%0d B=%0d op_set=%0d", A, B, op);
-                        $display("Expected: %d  received: %d", expected, result);
-                        test_result = TEST_FAILED;
-                    end;
-                end
-
+            	reset_mult();
             end : case_default_blk
         endcase // case (op_set)
-    // print coverage after each loop
-    // $strobe("%0t coverage: %.4g\%",$time, $get_coverage());
-    // if($get_coverage() == 100) break;
+        req	= 1'b1;  
+        begin
+            wait(ack)
+            @(negedge clk);
+        	req = 1'b0;
+            wait(result_rdy)
+            @(negedge clk);
+            get_expected(arg_a, arg_b, op_set, result_expected, result_parity_expected, arg_parity_error_expected);
+            assert(result === result_expected & result_parity === result_parity_expected & arg_parity_error === arg_parity_error_expected) begin
+                `ifdef DEBUG
+                $display("Test passed for arg_a=%0d arg_b=%0d op_set=%0d arg_a_parity=%b arg_b_parity=%b", arg_a, arg_b, op, arg_a_parity, arg_b_parity);
+                `endif
+            end
+            else begin
+                $display("Test FAILED for arg_a=%0d arg_b=%0d op_set=%0d arg_a_parity=%b arg_b_parity=%b", arg_a, arg_b, op, arg_a_parity, arg_b_parity);
+                $display("Expected: %d  received: %d. Expected result_parity: %b  received result_parity: %b. Expected arg_parity_error: %b  received arg_parity_error: %b ", result_expected, result, result_parity_expected, result_parity, arg_parity_error_expected, arg_parity_error);
+                test_result = TEST_FAILED;
+            end;
+        end
     end : tester_main_blk
     $finish;
 end : tester
 
-//------------------------------------------------------------------------------
-// reset task
-//------------------------------------------------------------------------------
-
-task reset_alu();
-    `ifdef DEBUG
-    $display("%0t DEBUG: reset_alu", $time);
-    `endif
-    start   = 1'b0;
-    reset_n = 1'b0;
-    @(negedge clk);
-    reset_n = 1'b1;
-endtask : reset_alu
-
-//------------------------------------------------------------------------------
-// calculate expected result
-//------------------------------------------------------------------------------
-
-function logic [15:0] get_expected(
-        bit [7:0] A,
-        bit [7:0] B,
-        operation_t op_set
-    );
-    bit [15:0] ret;
-    `ifdef DEBUG
-    $display("%0t DEBUG: get_expected(%0d,%0d,%0d)",$time, A, B, op_set);
-    `endif
-    case(op_set)
-        and_op : ret    = A & B;
-        add_op : ret    = A + B;
-        mul_op : ret    = A * B;
-        xor_op : ret    = A ^ B;
-        default: begin
-            $display("%0t INTERNAL ERROR. get_expected: unexpected case argument: %s", $time, op_set);
-            test_result = TEST_FAILED;
-            return -1;
-        end
-    endcase
-    return(ret);
-endfunction : get_expected
 
 //------------------------------------------------------------------------------
 // Temporary. The scoreboard will be later used for checking the data
+//------------------------------------------------------------------------------
 final begin : finish_of_the_test
     print_test_result(test_result);
 end
