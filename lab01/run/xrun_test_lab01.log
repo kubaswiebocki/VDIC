@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 18, 2023 at 17:14:09 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 18, 2023 at 21:07:45 CEST
 xrun
 	-F ../tb/tb.f
 		-F ../tb/../../common/vdic_dut_2023.f
@@ -259,7 +259,7 @@ xcelium> run
 -----------------------------------[0m
 
 Simulation complete via $finish(1) at time 55160 NS + 0
-../tb/vdic_dut_2023_tb.sv:284     $finish;
+../tb/vdic_dut_2023_tb.sv:287     $finish;
 xcelium> exit
 See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
 
@@ -270,6 +270,6 @@ coverage setup:
   testname :  test
 
 coverage files:
-  model(design data) :  ./cov_work/scope/icc_60c0b774_41bc0a96.ucm
-  data               :  ./cov_work/scope/test/icc_60c0b774_41bc0a96.ucd
-TOOL:	xrun	21.03-s009: Exiting on Oct 18, 2023 at 17:14:11 CEST  (total: 00:00:02)
+  model(design data) :  ./cov_work/scope/icc_4f270156_41bc0a96.ucm
+  data               :  ./cov_work/scope/test/icc_4f270156_41bc0a96.ucd
+TOOL:	xrun	21.03-s009: Exiting on Oct 18, 2023 at 21:07:47 CEST  (total: 00:00:02)

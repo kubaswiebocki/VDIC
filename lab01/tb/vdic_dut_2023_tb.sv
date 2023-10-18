@@ -75,7 +75,6 @@ assign op = op_set;
 
 test_result_t       test_result = TEST_PASSED;
 
-bit 				ack_result;
 //------------------------------------------------------------------------------
 // DUT instantiation
 //------------------------------------------------------------------------------
@@ -114,7 +113,7 @@ end
 //---------------------------------
 // Random data generation functions
 //---------------------------------
-
+// Generate random operation to do
 function operation_t get_op();
     bit [2:0] op_choice;
     op_choice = 3'($random);
@@ -124,11 +123,15 @@ function operation_t get_op();
 	    3'b010 : return INVALID_A_B;
         3'b011 : return VALID_A_INVALID_B;
         3'b100 : return VALID_B_INVALID_A;
+	    3'b101 : return RST_OP;
+	    3'b110 : return RST_OP;
+	    3'b111 : return RST_OP;
 	    default : return RST_OP;
     endcase // case (op_choice)
 endfunction : get_op
 
 //---------------------------------
+// Generate random data for input a,b
 function shortint get_data();
 
     bit [1:0] zero_ones;
@@ -147,6 +150,7 @@ endfunction : get_data
 // Random data handling tasks
 //---------------------------------
 
+//---------------------------------
 //Input data parity check
 task get_parity(
 		input shortint   data,
@@ -157,11 +161,12 @@ task get_parity(
 	
 	parity = ^data;
 	
-	if (data_valid)
+	if (data_valid == 0)
 		parity = !parity;
 
 endtask : get_parity
 
+//---------------------------------
 //Reset task
 task reset_mult();
 
@@ -177,6 +182,7 @@ task reset_mult();
 	
 endtask : reset_mult
 
+//---------------------------------
 //Calculate expected result
 task get_expected(
 		input shortint	arg_a,
@@ -242,20 +248,20 @@ initial begin : tester
 	            continue;
             end : case_rst_op_blk
             VALID_A_B: begin: case_valid_a_b_blk
-	            get_parity(arg_a, 1'b0, arg_a_parity);
-	            get_parity(arg_b, 1'b0, arg_b_parity);
+	            get_parity(arg_a, 1'b1, arg_a_parity);
+	            get_parity(arg_b, 1'b1, arg_b_parity);
             end : case_valid_a_b_blk
             INVALID_A_B: begin: case_invalid_a_b_blk
-	            get_parity(arg_a, 1'b1, arg_a_parity);
-	            get_parity(arg_b, 1'b1, arg_b_parity);
+	            get_parity(arg_a, 1'b0, arg_a_parity);
+	            get_parity(arg_b, 1'b0, arg_b_parity);
             end : case_invalid_a_b_blk
             VALID_A_INVALID_B: begin: case_vd_a_ivd_b_blk
-	            get_parity(arg_a, 1'b0, arg_a_parity);
-	            get_parity(arg_b, 1'b1, arg_b_parity);
-            end : case_vd_a_ivd_b_blk
-            VALID_B_INVALID_A: begin: case_vd_b_ivd_a_blk
 	            get_parity(arg_a, 1'b1, arg_a_parity);
 	            get_parity(arg_b, 1'b0, arg_b_parity);
+            end : case_vd_a_ivd_b_blk
+            VALID_B_INVALID_A: begin: case_vd_b_ivd_a_blk
+	            get_parity(arg_a, 1'b0, arg_a_parity);
+	            get_parity(arg_b, 1'b1, arg_b_parity);
             end : case_vd_b_ivd_a_blk
             default: begin : case_default_blk
             	reset_mult();
