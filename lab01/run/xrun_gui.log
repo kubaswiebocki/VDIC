@@ -267,4 +267,18 @@ xcelium> run
 
 Simulation complete via $finish(1) at time 34980 NS + 0
 ../tb/vdic_dut_2023_tb.sv:250     $finish;
-xcelium> 
+xcelium> See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  top(top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_7126d02e_00000000.ucm
+  data               :  ./cov_work/scope/test/icc_7126d02e_00000000.ucd
+TOOL:	xrun	21.03-s009: Exiting on Oct 17, 2023 at 22:33:45 CEST  (total: 02:32:18)
+                                                                                                                                                                                                                                                                                                                                                                     xmsim: *W,NCTERM: Simulation received SIGTERM signal from process 22571, user id 4100 (<unknown>).
+xmsim: *F,C58TDR: Unable to overwrite test directory './cov_work/scope/test'.
+TOOL:	xrun	21.03-s009: Exiting on Oct 17, 2023 at 22:33:45 CEST  (total: 02:37:00)

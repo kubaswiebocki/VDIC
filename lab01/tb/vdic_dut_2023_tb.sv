@@ -52,19 +52,19 @@ typedef enum {
 
 bit              	clk;
 bit              	rst_n;
-bit      	 [15:0] arg_a;
+shortint			arg_a;
 bit         	    arg_a_parity;
-bit       	 [15:0] arg_b;
+shortint			arg_b;
 bit              	arg_b_parity;
 bit              	req;
 
 wire 			 	ack;
-wire      	 [31:0] result;
+int      	 		result;
 wire             	result_parity;
 wire 			 	result_rdy;
 wire			 	arg_parity_error;
 
-bit      	 [31:0] result_expected;
+int 				result_expected;
 bit             	result_parity_expected;
 bit			 		arg_parity_error_expected;
 		         
@@ -73,8 +73,9 @@ bit			  [2:0] op;
 operation_t         op_set;
 assign op = op_set;
 
-test_result_t        test_result = TEST_PASSED;
+test_result_t       test_result = TEST_PASSED;
 
+bit 				ack_result;
 //------------------------------------------------------------------------------
 // DUT instantiation
 //------------------------------------------------------------------------------
@@ -110,7 +111,6 @@ end
 //------------------------------------------------------------------------------
 // Tester
 //------------------------------------------------------------------------------
-
 //---------------------------------
 // Random data generation functions
 //---------------------------------
@@ -149,7 +149,7 @@ endfunction : get_data
 
 //Input data parity check
 task get_parity(
-		input bit [15:0] data,
+		input shortint   data,
 		input bit        data_valid,
 		
 		output bit       parity
@@ -179,11 +179,11 @@ endtask : reset_mult
 
 //Calculate expected result
 task get_expected(
-		input bit [15:0]	arg_a,
-		input bit [15:0]	arg_b,
+		input shortint	arg_a,
+		input shortint	arg_b,
 		input operation_t	op_set,
 		
-		output bit [31:0]	result,
+		output int    	    result,
 		output bit			result_parity,
 		output bit			arg_parity_error
 	);
@@ -263,10 +263,10 @@ initial begin : tester
         endcase // case (op_set)
         req	= 1'b1;  
         begin
-            wait(ack)
+	        wait(ack);
             @(negedge clk);
         	req = 1'b0;
-            wait(result_rdy)
+            wait(result_rdy);
             @(negedge clk);
             get_expected(arg_a, arg_b, op_set, result_expected, result_parity_expected, arg_parity_error_expected);
             assert(result === result_expected & result_parity === result_parity_expected & arg_parity_error === arg_parity_error_expected) begin
@@ -295,7 +295,6 @@ end
 //------------------------------------------------------------------------------
 // Other functions
 //------------------------------------------------------------------------------
-
 // used to modify the color of the text printed on the terminal
 function void set_print_color ( print_color_t c );
     string ctl;

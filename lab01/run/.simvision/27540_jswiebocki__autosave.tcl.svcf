@@ -25,10 +25,10 @@ if {[catch {window new WatchList -name "Design Browser 1" -geometry 2560x1291+0+
 }
 window target "Design Browser 1" on
 browser using {Design Browser 1}
-browser set -scope  simulator::top 
+browser set -scope  {simulator::[format {top}]} 
 browser set \
     -signalsort name
-browser yview see  simulator::top 
+browser yview see  {simulator::[format {top}]} 
 browser timecontrol set -lock 0
 
 #
