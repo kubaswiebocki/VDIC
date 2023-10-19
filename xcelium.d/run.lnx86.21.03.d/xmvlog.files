@@ -2,7 +2,5 @@
 // File created by:  xrun
 // Do not modify this file
 //
-/home/student/jswiebocki/VDIC/common/tinyalu/single_cycle.sv
-/home/student/jswiebocki/VDIC/common/tinyalu/three_cycle.sv
-/home/student/jswiebocki/VDIC/common/tinyalu/tinyalu.sv
-/home/student/jswiebocki/VDIC/lab01example/tb/tinyalu_tb.sv
+/home/student/jswiebocki/VDIC/common/vdic_dut_2023.svp
+/home/student/jswiebocki/VDIC/lab01/tb/vdic_dut_2023_tb.sv

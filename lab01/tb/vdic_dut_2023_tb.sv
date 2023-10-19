@@ -134,14 +134,20 @@ endfunction : get_op
 // Generate random data for input a,b
 function shortint get_data();
 
-    bit [1:0] zero_ones;
+    bit [2:0] zero_ones;
 
-    zero_ones = 2'($random);
+    zero_ones = 3'($random);
 	
-    if (zero_ones == 2'b00)
+    if (zero_ones == 3'b000)
         return 16'h0000;
-    else if (zero_ones == 2'b11)
+    else if (zero_ones == 3'b001) 
+        return 16'h0001;
+    else if (zero_ones == 3'b010)
+        return 16'h7FFF;
+    else if (zero_ones == 3'b100)
         return 16'hFFFF;
+    else if (zero_ones == 3'b111)
+        return 16'h8000;
     else
         return 16'($random);
 endfunction : get_data
@@ -269,11 +275,9 @@ initial begin : tester
         endcase // case (op_set)
         req	= 1'b1;  
         begin
-	        wait(ack);
-            @(negedge clk);
+	        while(!ack)@(negedge clk);
         	req = 1'b0;
-            wait(result_rdy);
-            @(negedge clk);
+	        while(!result_rdy)@(negedge clk);
             get_expected(arg_a, arg_b, op_set, result_expected, result_parity_expected, arg_parity_error_expected);
             assert(result === result_expected & result_parity === result_parity_expected & arg_parity_error === arg_parity_error_expected) begin
                 `ifdef DEBUG
