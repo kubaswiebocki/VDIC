@@ -532,4 +532,65 @@ function void print_test_result (test_result_t r);
 endfunction
 
 
+//------------------------------------------------------------------------------
+// Scoreboard
+//------------------------------------------------------------------------------
+bit                         req_prev;
+
+typedef struct packed {
+    shortint arg_a;
+    shortint arg_b;
+	bit 	 arg_a_parity;
+	bit 	 arg_b_parity;
+    operation_t op_set;
+    int result;
+	bit result_parity;
+	bit arg_parity_error;
+} data_packet_t;
+
+int                  result_scoreboard;
+bit                  result_parity_scoreboard;
+bit                  arg_parity_error_scoreboard;
+
+data_packet_t               sb_data_q   [$];
+
+always @(posedge clk) begin:scoreboard_fe_blk
+    if(req == 1 && req_prev == 0) begin
+        case(op_set)
+            VALID_A_B, INVALID_A_B, VALID_B_INVALID_A, VALID_A_INVALID_B : begin
+	            get_expected(arg_a, arg_b, op_set, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard);
+                sb_data_q.push_front(
+                    data_packet_t'({arg_a,arg_b,op_set, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard})
+                );
+            end
+        endcase
+    end
+    req_prev = req;
+end
+
+always @(negedge clk) begin : scoreboard_be_blk
+    if(ack && result_rdy) begin:verify_result
+        data_packet_t dp;
+
+        dp = sb_data_q.pop_back();
+	    
+        CHK_RESULT: assert((result === dp.result) && (result_parity === dp.result_parity) && (arg_parity_error === dp.arg_parity_error)) begin
+           `ifdef DEBUG
+            $display("%0t Test passed for arg_a=%0d, arg_a_parity=%0d, arg_b=%0d, arg_b_parity=%0d, op_set=%0d", $time, dp.arg_a, dp.arg_a_parity, dp.arg_b, dp.arg_b_parity, dp.op_set);
+           `endif
+        end
+        else begin
+            test_result = TEST_FAILED;
+            $error("%0t Test FAILED for arg_a=%0d arg_b=%0d op_set=%0d arg_a_parity=%b arg_b_parity=%b \n \
+					Expected: %d  received: %d. Expected result_parity: %b  received result_parity: %b. E\
+					xpected arg_parity_error: %b  received arg_parity_error: %b", 
+					$time, dp.arg_a, dp.arg_b, dp.op_set, dp.arg_a_parity, dp.arg_b_parity, result_scoreboard, dp.result, result_parity_scoreboard, 
+					dp.result_parity, arg_parity_error_scoreboard, dp.arg_parity_error
+                );         
+        end;
+
+    end
+end : scoreboard_be_blk
+
 endmodule : top
+

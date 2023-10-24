@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 22:33:15 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 23:35:21 CEST
 xrun
 	-F ../tb/tb.f
 		-F ../tb/../../common/vdic_dut_2023.f
@@ -33,21 +33,22 @@ Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /eda/
 	Total FSMs extracted = 0
 	Building instance overlay tables: .................... Done
 	Enabling instrumentation for coverage types: block expression FSM toggle functional
+xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemverilog enumerated nets and variables inside structures. To enable toggle coverage of these objects, specify the 'set_toggle_scoring -sv_enum -sv_struct_with_enum' command in the coverage configuration file.
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                Instances  Unique
 		Modules:                2       2
-		Registers:             58      58
+		Registers:             65      65
 		Scalar wires:          13       -
 		Vectored wires:        11       -
-		Always blocks:          1       1
+		Always blocks:          3       3
 		Initial blocks:         5       5
 		Final blocks:           1       1
 		Cont. assignments:      9      11
 		Pseudo assignments:     6       6
-		Assertions:             3       3
+		Assertions:             4       4
 		Covergroup Instances:   0       2
 	Writing initial simulation snapshot: worklib.top:sv
 Loading snapshot worklib.top:sv .................... Done
@@ -72,6 +73,6 @@ coverage setup:
   testname :  lab02_example
 
 coverage files:
-  model(design data) :  ./cov_work/scope/icc_58512a58_2733716a.ucm
-  data               :  ./cov_work/scope/lab02_example/icc_58512a58_2733716a.ucd
-TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 22:33:16 CEST  (total: 00:00:01)
+  model(design data) :  ./cov_work/scope/icc_12ea34c1_51a46bd3.ucm
+  data               :  ./cov_work/scope/lab02_example/icc_12ea34c1_51a46bd3.ucd
+TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 23:35:22 CEST  (total: 00:00:01)
