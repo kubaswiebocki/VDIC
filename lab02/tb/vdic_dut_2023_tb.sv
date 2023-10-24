@@ -27,7 +27,8 @@ typedef enum bit[2:0] {
     VALID_A_B		  = 3'b001,
     INVALID_A_B  	  = 3'b010,
     VALID_A_INVALID_B = 3'b011,
-    VALID_B_INVALID_A = 3'b100
+    VALID_B_INVALID_A = 3'b100,
+    ACK_OP  		  = 3'b101
 } operation_t;
 
 
@@ -69,7 +70,8 @@ bit             	result_parity_expected;
 bit			 		arg_parity_error_expected;
 		         
 bit			  [2:0] op;	
-	
+
+int					timeout;
 operation_t         op_set;
 assign op = op_set;
 
@@ -123,7 +125,7 @@ function operation_t get_op();
 	    3'b010 : return INVALID_A_B;
         3'b011 : return VALID_A_INVALID_B;
         3'b100 : return VALID_B_INVALID_A;
-	    3'b101 : return RST_OP;
+	    3'b101 : return ACK_OP;
 	    3'b110 : return RST_OP;
 	    3'b111 : return RST_OP;
 	    default : return RST_OP;
@@ -228,7 +230,7 @@ task get_expected(
 			result				= 32'b0;
 			arg_parity_error	= 1'b1;
 			result_parity    	= ^result;
-		end
+		end	
 		default:
 		begin
 			$display("%0t INTERNAL ERROR. get_expected: unexpected case argument: %s", $time, op_set);
@@ -251,6 +253,16 @@ initial begin : tester
         case (op_set) // handle the start signal
             RST_OP: begin: case_rst_op_blk
 	            reset_mult();
+	            assert(result === 0 & ack === 0 & result_rdy === 0) begin
+	                `ifdef DEBUG
+	                $display("Test passed for reset mult");
+	                `endif
+	            end
+	            else begin
+	                $display("Test FAILED for reset mult");
+	                $display("Expected value for all outputs is 0. Received result: %d. Received ack: %b. Received result_rdy: %b.", result, ack, result_rdy);
+	                test_result = TEST_FAILED;
+	            end;
 	            continue;
             end : case_rst_op_blk
             VALID_A_B: begin: case_valid_a_b_blk
@@ -269,6 +281,26 @@ initial begin : tester
 	            get_parity(arg_a, 1'b0, arg_a_parity);
 	            get_parity(arg_b, 1'b1, arg_b_parity);
             end : case_vd_b_ivd_a_blk
+            ACK_OP: begin: case_ack_blk
+	            timeout = 0;
+	            req	= 1'b1;
+	            while(!ack && !result_rdy && timeout<1000) begin
+		            timeout += 1;
+		            @(negedge clk);
+	            end
+	            assert (timeout < 1000) begin
+		            `ifdef DEBUG
+                	$display("Test passed for ack and result_rdy");
+                	`endif
+	            end
+	            else begin
+		            $display("Test FAILED for ack and result_rdy test");
+	                $display("Expected value for both values is 1. Received ack: %b. Received result_rdy: %b.", ack, result_rdy);
+	                test_result = TEST_FAILED;
+	            end
+	            req	= 1'b0;
+	            continue;
+            end: case_ack_blk
             default: begin : case_default_blk
             	reset_mult();
             end : case_default_blk
