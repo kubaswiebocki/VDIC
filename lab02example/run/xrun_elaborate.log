@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 19:14:40 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 21:31:06 CEST
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -63,4 +63,4 @@ xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemveril
 		Assertions:             2       2
 		Covergroup Instances:   0       2
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 19:14:40 CEST  (total: 00:00:00)
+TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 21:31:06 CEST  (total: 00:00:00)

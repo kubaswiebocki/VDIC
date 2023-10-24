@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 18:59:16 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 22:33:15 CEST
 xrun
 	-F ../tb/tb.f
 		-F ../tb/../../common/vdic_dut_2023.f
@@ -19,6 +19,7 @@ xrun
 	-coverage all
 	-covoverwrite
 	-covfile xrun_covfile.txt
+	-covtest lab02_example
 	+UVM_TESTNAME=lab02_example
 	-l xrun_test_lab02_example.log
 Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/methodology/UVM/CDNS-1.1d
@@ -36,17 +37,18 @@ Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /eda/
 	Performing constant object marking (COM) analysis.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
-		              Instances  Unique
-		Modules:              2       2
-		Registers:           58      58
-		Scalar wires:        13       -
-		Vectored wires:      11       -
-		Always blocks:        1       1
-		Initial blocks:       4       4
-		Final blocks:         1       1
-		Cont. assignments:    9      11
-		Pseudo assignments:   6       6
-		Assertions:           3       3
+		                Instances  Unique
+		Modules:                2       2
+		Registers:             58      58
+		Scalar wires:          13       -
+		Vectored wires:        11       -
+		Always blocks:          1       1
+		Initial blocks:         5       5
+		Final blocks:           1       1
+		Cont. assignments:      9      11
+		Pseudo assignments:     6       6
+		Assertions:             3       3
+		Covergroup Instances:   0       2
 	Writing initial simulation snapshot: worklib.top:sv
 Loading snapshot worklib.top:sv .................... Done
 xcelium> source /eda/cadence/2021-22/RHELx86/XCELIUM_21.03.009/tools/xcelium/files/xmsimrc
@@ -59,17 +61,17 @@ xcelium> run
 -----------------------------------[0m
 
 Simulation complete via $finish(1) at time 57160 NS + 0
-../tb/vdic_dut_2023_tb.sv:326     $finish;
+../tb/vdic_dut_2023_tb.sv:483     $finish;
 xcelium> exit
-See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
+See ./cov_work/scope/lab02_example/icc.com file for message(s) on coverage constant object marking
 
 coverage setup:
   workdir  :  ./cov_work
   dutinst  :  top(top)
   scope    :  scope
-  testname :  test
+  testname :  lab02_example
 
 coverage files:
-  model(design data) :  ./cov_work/scope/icc_6ce326a4_388b8d03.ucm
-  data               :  ./cov_work/scope/test/icc_6ce326a4_388b8d03.ucd
-TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 18:59:20 CEST  (total: 00:00:04)
+  model(design data) :  ./cov_work/scope/icc_58512a58_2733716a.ucm
+  data               :  ./cov_work/scope/lab02_example/icc_58512a58_2733716a.ucd
+TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 22:33:16 CEST  (total: 00:00:01)

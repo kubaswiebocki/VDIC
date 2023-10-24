@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 19:14:40 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 21:31:06 CEST
 xrun
 	-F ../tb/tb.f
 		-F ../tb/../../common/tinyalu/tinyalu.f
@@ -78,4 +78,4 @@ coverage setup:
 coverage files:
   model(design data) :  ./cov_work/scope/icc_0944b3d2_3dc4ee55.ucm
   data               :  ./cov_work/scope/lab02_example/icc_0944b3d2_3dc4ee55.ucd
-TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 19:14:42 CEST  (total: 00:00:02)
+TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 21:31:08 CEST  (total: 00:00:02)
