@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 23:35:20 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 25, 2023 at 20:46:02 CEST
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -7,6 +7,7 @@ xrun
 			vdic_dut_2023.svp
 		vdic_dut_2023_tb.sv
 	-v93
+	-define DEBUG
 	+nowarnDSEM2009
 	+nowarnDSEMEL
 	+nowarnCGDEFN
@@ -34,8 +35,8 @@ xrun
 	Generating native compiled code:
 		worklib.vdic_dut_2023:svp <0x094e8dce>
 			streams:  25, words: 13928
-		worklib.top:sv <0x3c5ae322>
-			streams:  26, words: 58413
+		worklib.top:sv <0x40043f91>
+			streams:  23, words: 48873
 xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemverilog enumerated nets and variables inside structures. To enable toggle coverage of these objects, specify the 'set_toggle_scoring -sv_enum -sv_struct_with_enum' command in the coverage configuration file.
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
@@ -43,15 +44,15 @@ xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemveril
 	Design hierarchy summary:
 		                Instances  Unique
 		Modules:                2       2
-		Registers:             65      65
+		Registers:             58      58
 		Scalar wires:          13       -
-		Vectored wires:        11       -
+		Vectored wires:        10       -
 		Always blocks:          3       3
 		Initial blocks:         5       5
 		Final blocks:           1       1
-		Cont. assignments:      9      11
-		Pseudo assignments:     6       6
-		Assertions:             4       4
+		Cont. assignments:      8      10
+		Pseudo assignments:     4       4
+		Assertions:             1       1
 		Covergroup Instances:   0       2
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 23:35:21 CEST  (total: 00:00:01)
+TOOL:	xrun	21.03-s009: Exiting on Oct 25, 2023 at 20:46:02 CEST  (total: 00:00:00)

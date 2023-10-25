@@ -36,8 +36,6 @@ RNDXCELON
 SAWSTP
 -NOCOPYRIGHT
 -COVOVERWRITE
--COVTEST
-lab02_example
 +UVM_TESTNAME=lab02_example
 -MESSAGES
 -RUN
@@ -46,7 +44,7 @@ lab02_example
 +EMGRLOG
 xrun_test_lab02_example.log
 -XLSTIME
-1698183321
+1698259562
 -XLKEEP
 -XLMODE
 ./INCA_libs/run.lnx86.21.03.d

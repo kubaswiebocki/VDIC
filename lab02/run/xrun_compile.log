@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 24, 2023 at 23:35:20 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 25, 2023 at 20:46:01 CEST
 xrun
 	-compile
 	-l xrun_compile.log
@@ -7,6 +7,7 @@ xrun
 			vdic_dut_2023.svp
 		vdic_dut_2023_tb.sv
 	-v93
+	-define DEBUG
 	+nowarnDSEM2009
 	+nowarnDSEMEL
 	+nowarnCGDEFN
@@ -27,4 +28,4 @@ file: ../tb/../../common/vdic_dut_2023.svp
 file: ../tb/vdic_dut_2023_tb.sv
 	module worklib.top:sv
 		errors: 0, warnings: 0
-TOOL:	xrun	21.03-s009: Exiting on Oct 24, 2023 at 23:35:20 CEST  (total: 00:00:00)
+TOOL:	xrun	21.03-s009: Exiting on Oct 25, 2023 at 20:46:02 CEST  (total: 00:00:01)

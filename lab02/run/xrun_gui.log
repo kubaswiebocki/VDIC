@@ -79,4 +79,15 @@ xcelium> ^C
 xcelium> ^C
 xcelium> ^C
 xcelium> ^C
-xcelium> 
+xcelium> See ./cov_work/scope/test/icc.com file for message(s) on coverage constant object marking
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  top(top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_2731eb43_0e269cf6.ucm
+  data               :  ./cov_work/scope/test/icc_2731eb43_0e269cf6.ucd
+TOOL:	xrun	21.03-s009: Exiting on Oct 25, 2023 at 00:02:56 CEST  (total: 05:35:13)

@@ -2,4 +2,4 @@
 // File created by:  xrun
 // Do not modify this file
 
-s1::(24Oct2023:23:18:44):( xrun +compile +sv -f /home/student/jswiebocki/VDIC/.dvt/lab02.build )
+s1::(25Oct2023:17:20:26):( xrun +compile +sv -f /home/student/jswiebocki/VDIC/.dvt/lab02.build )

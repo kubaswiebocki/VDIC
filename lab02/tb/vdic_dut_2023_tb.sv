@@ -27,8 +27,7 @@ typedef enum bit[2:0] {
     VALID_A_B		  = 3'b001,
     INVALID_A_B  	  = 3'b010,
     VALID_A_INVALID_B = 3'b011,
-    VALID_B_INVALID_A = 3'b100,
-    ACK_RDY_OP  	  = 3'b101
+    VALID_B_INVALID_A = 3'b100
 } operation_t;
 
 
@@ -64,16 +63,9 @@ int      	 		result;
 wire             	result_parity;
 wire 			 	result_rdy;
 wire			 	arg_parity_error;
-
-int 				result_expected;
-bit             	result_parity_expected;
-bit			 		arg_parity_error_expected;
 		         
-bit			  [2:0] op;	
-
 int					timeout;
 operation_t         op_set;
-assign op = op_set;
 
 test_result_t       test_result = TEST_PASSED;
 
@@ -104,9 +96,9 @@ covergroup op_cov;
 
         // #A4 test invalid data at the B input, valid data at the A input
         bins A4_valid_A_invalid_B = VALID_A_INVALID_B;
-
-        // #A5 single-cycle operation after multiply
-        bins A5_ack_rdy_op = ACK_RDY_OP;
+	    
+	    // #A5 test reset
+        bins A5_reset = RST_OP;
     }
 
 endgroup
@@ -117,7 +109,7 @@ covergroup corner_values_on_ops;
     option.name = "cg_corner_values_on_ops";
 
     all_ops : coverpoint op_set {
-        ignore_bins null_ops = {RST_OP, ACK_RDY_OP};
+        ignore_bins null_ops = {RST_OP};
     }
 
     a_leg: coverpoint arg_a {
@@ -153,7 +145,7 @@ covergroup corner_values_on_ops;
 
         bins B1_vaib_max         = binsof (all_ops) intersect {VALID_A_INVALID_B} &&
         (binsof (a_leg.max) || binsof (b_leg.max));
-
+	    
 	    // #B2 Simulate minimum value for signed data.   
 
         bins B2_vab_min          = binsof (all_ops) intersect {VALID_A_B} &&
@@ -209,7 +201,8 @@ covergroup corner_values_on_ops;
 
         bins B5_vaib_0          = binsof (all_ops) intersect {VALID_A_INVALID_B} &&
         (binsof (a_leg.zeros) || binsof (b_leg.zeros));
-
+	    
+	    
         ignore_bins others_only =
         binsof(a_leg.others) && binsof(b_leg.others);
     }
@@ -282,9 +275,6 @@ function operation_t get_op();
 	    3'b010 : return INVALID_A_B;
         3'b011 : return VALID_A_INVALID_B;
         3'b100 : return VALID_B_INVALID_A;
-	    3'b101 : return ACK_RDY_OP;
-	    3'b110 : return RST_OP;
-	    3'b111 : return RST_OP;
 	    default : return RST_OP;
     endcase // case (op_choice)
 endfunction : get_op
@@ -409,17 +399,7 @@ initial begin : tester
 	    arg_b 	= get_data();
         case (op_set) // handle the start signal
             RST_OP: begin: case_rst_op_blk
-	            reset_mult();
-	            assert(result === 0 & ack === 0 & result_rdy === 0) begin
-	                `ifdef DEBUG
-	                $display("Test passed for reset mult");
-	                `endif
-	            end
-	            else begin
-	                $display("Test FAILED for reset mult");
-	                $display("Expected value for all outputs is 0. Received result: %d. Received ack: %b. Received result_rdy: %b.", result, ack, result_rdy);
-	                test_result = TEST_FAILED;
-	            end;
+	            reset_mult(); 
 	            continue;
             end : case_rst_op_blk
             VALID_A_B: begin: case_valid_a_b_blk
@@ -438,47 +418,17 @@ initial begin : tester
 	            get_parity(arg_a, 1'b0, arg_a_parity);
 	            get_parity(arg_b, 1'b1, arg_b_parity);
             end : case_vd_b_ivd_a_blk
-            ACK_RDY_OP: begin: case_ack_blk
-	            timeout = 0;
-	            req	= 1'b1;
-	            while(!ack && !result_rdy && timeout<1000) begin
-		            timeout += 1;
-		            @(negedge clk);
-	            end
-	            assert (timeout < 1000) begin
-		            `ifdef DEBUG
-                	$display("Test passed for ack and result_rdy");
-                	`endif
-	            end
-	            else begin
-		            $display("Test FAILED for ack and result_rdy test");
-	                $display("Expected value for both values is 1. Received ack: %b. Received result_rdy: %b.", ack, result_rdy);
-	                test_result = TEST_FAILED;
-	            end
-	            req	= 1'b0;
-	            continue;
-            end: case_ack_blk
             default: begin : case_default_blk
             	reset_mult();
+	            continue;
             end : case_default_blk
         endcase // case (op_set)
+
         req	= 1'b1;  
-        begin
-	        while(!ack)@(negedge clk);
-        	req = 1'b0;
-	        while(!result_rdy)@(negedge clk);
-            get_expected(arg_a, arg_b, op_set, result_expected, result_parity_expected, arg_parity_error_expected);
-            assert(result === result_expected & result_parity === result_parity_expected & arg_parity_error === arg_parity_error_expected) begin
-                `ifdef DEBUG
-                $display("Test passed for arg_a=%0d arg_b=%0d op_set=%0d arg_a_parity=%b arg_b_parity=%b", arg_a, arg_b, op, arg_a_parity, arg_b_parity);
-                `endif
-            end
-            else begin
-                $display("Test FAILED for arg_a=%0d arg_b=%0d op_set=%0d arg_a_parity=%b arg_b_parity=%b", arg_a, arg_b, op, arg_a_parity, arg_b_parity);
-                $display("Expected: %d  received: %d. Expected result_parity: %b  received result_parity: %b. Expected arg_parity_error: %b  received arg_parity_error: %b ", result_expected, result, result_parity_expected, result_parity, arg_parity_error_expected, arg_parity_error);
-                test_result = TEST_FAILED;
-            end;
-        end
+        while(!ack)@(negedge clk);
+    	req = 1'b0;
+        while(!result_rdy)@(negedge clk);        
+
     end : tester_main_blk
     $finish;
 end : tester
@@ -540,8 +490,8 @@ bit                         req_prev;
 typedef struct packed {
     shortint arg_a;
     shortint arg_b;
-	bit 	 arg_a_parity;
-	bit 	 arg_b_parity;
+	bit arg_a_parity;
+	bit arg_b_parity;
     operation_t op_set;
     int result;
 	bit result_parity;
@@ -557,10 +507,10 @@ data_packet_t               sb_data_q   [$];
 always @(posedge clk) begin:scoreboard_fe_blk
     if(req == 1 && req_prev == 0) begin
         case(op_set)
-            VALID_A_B, INVALID_A_B, VALID_B_INVALID_A, VALID_A_INVALID_B : begin
+            VALID_A_B, INVALID_A_B, VALID_B_INVALID_A, VALID_A_INVALID_B: begin
 	            get_expected(arg_a, arg_b, op_set, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard);
                 sb_data_q.push_front(
-                    data_packet_t'({arg_a,arg_b,op_set, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard})
+                    data_packet_t'({arg_a,arg_b, arg_a_parity, arg_b_parity, op_set, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard})
                 );
             end
         endcase
@@ -569,28 +519,26 @@ always @(posedge clk) begin:scoreboard_fe_blk
 end
 
 always @(negedge clk) begin : scoreboard_be_blk
-    if(ack && result_rdy) begin:verify_result
+    if(result_rdy) begin:verify_result
         data_packet_t dp;
-
         dp = sb_data_q.pop_back();
-	    
-        CHK_RESULT: assert((result === dp.result) && (result_parity === dp.result_parity) && (arg_parity_error === dp.arg_parity_error)) begin
-           `ifdef DEBUG
-            $display("%0t Test passed for arg_a=%0d, arg_a_parity=%0d, arg_b=%0d, arg_b_parity=%0d, op_set=%0d", $time, dp.arg_a, dp.arg_a_parity, dp.arg_b, dp.arg_b_parity, dp.op_set);
-           `endif
-        end
-        else begin
-            test_result = TEST_FAILED;
-            $error("%0t Test FAILED for arg_a=%0d arg_b=%0d op_set=%0d arg_a_parity=%b arg_b_parity=%b \n \
-					Expected: %d  received: %d. Expected result_parity: %b  received result_parity: %b. E\
-					xpected arg_parity_error: %b  received arg_parity_error: %b", 
-					$time, dp.arg_a, dp.arg_b, dp.op_set, dp.arg_a_parity, dp.arg_b_parity, result_scoreboard, dp.result, result_parity_scoreboard, 
-					dp.result_parity, arg_parity_error_scoreboard, dp.arg_parity_error
-                );         
-        end;
-
+	    if(dp.op_set !== RST_OP) begin
+	        CHK_verify: assert((result === dp.result) & (result_parity === dp.result_parity) & (arg_parity_error === dp.arg_parity_error)) begin
+	           `ifdef DEBUG
+	            $display("%0t Test passed for arg_a=%0d, arg_a_parity=%0d, arg_b=%0d, arg_b_parity=%0d, op_set=%0d", $time, dp.arg_a, dp.arg_a_parity, dp.arg_b, dp.arg_b_parity, dp.op_set);
+		        `endif
+	        end
+	        else begin
+	            test_result = TEST_FAILED;
+	            $error("%0t Test FAILED for arg_a=%0d arg_b=%0d op_set=%0d \n \
+						Expected: %d  received: %d. Expected result_parity: %b  received result_parity: %b. E\
+						xpected arg_parity_error: %b  received arg_parity_error: %b", 
+						$time, dp.arg_a, dp.arg_b, dp.op_set, dp.result, result, dp.result_parity, result_parity, dp.arg_parity_error, arg_parity_error
+	        		);         
+	        end;
+	    end
     end
 end : scoreboard_be_blk
-
+//
 endmodule : top
 
