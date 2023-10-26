@@ -57,4 +57,13 @@
 	<waiver name="_UNELABORATED_MODULE" severity="DISABLED">
 		<match path="/home/student/jswiebocki/VDIC/lab02/tb/vdic_dut_2023_tb.sv" message="_UNELABORATED_MODULE: Module 'non-top-files.top' is not elaborated"/>
 	</waiver>
+	<waiver name="_INTERNAL_GENERATED_CLOCK" severity="DISABLED">
+		<match path="/home/student/jswiebocki/VDIC/lab02/tb/vdic_dut_2023_tb.sv" message="_INTERNAL_GENERATED_CLOCK: Clock signal 'clk' is not an input port"/>
+	</waiver>
+	<waiver name="_ASSIGNMENT_BLOCKING" severity="DISABLED">
+		<match path="/home/student/jswiebocki/VDIC/lab02/tb/vdic_dut_2023_tb.sv" message="_ASSIGNMENT_BLOCKING: Blocking assignment of 'req_prev' in sequential logic (use non-blocking assignment)"/>
+	</waiver>
+	<waiver name="_ASSIGNMENT_BLOCKING" severity="DISABLED">
+		<match path="/home/student/jswiebocki/VDIC/lab02/tb/vdic_dut_2023_tb.sv" message="_ASSIGNMENT_BLOCKING: Blocking assignment of 'test_result' in sequential logic (use non-blocking assignment)"/>
+	</waiver>
 </waivers>

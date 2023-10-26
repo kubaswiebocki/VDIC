@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 25, 2023 at 20:53:16 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 26, 2023 at 08:19:04 CEST
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -32,10 +32,10 @@ xrun
 	Building instance overlay tables: .................... Done
 	Enabling instrumentation for coverage types: block expression FSM toggle functional
 	Generating native compiled code:
-		worklib.vdic_dut_2023:svp <0x094e8dce>
+		worklib.vdic_dut_2023:svp <0x31f3e734>
 			streams:  25, words: 13928
-		worklib.top:sv <0x60ac646f>
-			streams:  23, words: 45649
+		worklib.top:sv <0x3a26a0e7>
+			streams:  23, words: 45439
 xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemverilog enumerated nets and variables inside structures. To enable toggle coverage of these objects, specify the 'set_toggle_scoring -sv_enum -sv_struct_with_enum' command in the coverage configuration file.
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
@@ -43,7 +43,7 @@ xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemveril
 	Design hierarchy summary:
 		                Instances  Unique
 		Modules:                2       2
-		Registers:             58      58
+		Registers:             57      57
 		Scalar wires:          13       -
 		Vectored wires:        10       -
 		Always blocks:          3       3
@@ -54,4 +54,4 @@ xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemveril
 		Assertions:             1       1
 		Covergroup Instances:   0       2
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Oct 25, 2023 at 20:53:17 CEST  (total: 00:00:01)
+TOOL:	xrun	21.03-s009: Exiting on Oct 26, 2023 at 08:19:05 CEST  (total: 00:00:01)

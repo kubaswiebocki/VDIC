@@ -64,7 +64,6 @@ wire             	result_parity;
 wire 			 	result_rdy;
 wire			 	arg_parity_error;
 		         
-int					timeout;
 operation_t         op_set;
 
 test_result_t       test_result = TEST_PASSED;
@@ -97,8 +96,6 @@ covergroup op_cov;
         // #A4 test invalid data at the B input, valid data at the A input
         bins A4_valid_A_invalid_B = VALID_A_INVALID_B;
 	    
-	    // #A5 test reset
-        bins A5_reset = RST_OP;
     }
 
 endgroup

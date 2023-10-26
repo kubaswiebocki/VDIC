@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 25, 2023 at 20:53:17 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 26, 2023 at 08:19:05 CEST
 xrun
 	-F ../tb/tb.f
 		-F ../tb/../../common/vdic_dut_2023.f
@@ -40,7 +40,7 @@ xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemveril
 	Design hierarchy summary:
 		                Instances  Unique
 		Modules:                2       2
-		Registers:             58      58
+		Registers:             57      57
 		Scalar wires:          13       -
 		Vectored wires:        10       -
 		Always blocks:          3       3
@@ -62,7 +62,7 @@ xcelium> run
 -----------------------------------[0m
 
 Simulation complete via $finish(1) at time 56640 NS + 0
-../tb/vdic_dut_2023_tb.sv:433     $finish;
+../tb/vdic_dut_2023_tb.sv:430     $finish;
 xcelium> exit
 See ./cov_work/scope/lab02_example/icc.com file for message(s) on coverage constant object marking
 
@@ -73,6 +73,6 @@ coverage setup:
   testname :  lab02_example
 
 coverage files:
-  model(design data) :  ./cov_work/scope/icc_4d9861dd_5ceb94be.ucm
-  data               :  ./cov_work/scope/lab02_example/icc_4d9861dd_5ceb94be.ucd
-TOOL:	xrun	21.03-s009: Exiting on Oct 25, 2023 at 20:53:18 CEST  (total: 00:00:01)
+  model(design data) :  ./cov_work/scope/icc_4d9861dd_30711b69.ucm
+  data               :  ./cov_work/scope/lab02_example/icc_4d9861dd_30711b69.ucd
+TOOL:	xrun	21.03-s009: Exiting on Oct 26, 2023 at 08:19:07 CEST  (total: 00:00:02)
