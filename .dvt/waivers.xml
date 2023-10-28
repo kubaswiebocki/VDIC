@@ -66,4 +66,7 @@
 	<waiver name="_ASSIGNMENT_BLOCKING" severity="DISABLED">
 		<match path="/home/student/jswiebocki/VDIC/lab02/tb/vdic_dut_2023_tb.sv" message="_ASSIGNMENT_BLOCKING: Blocking assignment of 'test_result' in sequential logic (use non-blocking assignment)"/>
 	</waiver>
+	<waiver name="_UNELABORATED_MODULE" severity="DISABLED">
+		<match path="/home/student/jswiebocki/VDIC/lab03/tb/top.sv" message="_UNELABORATED_MODULE: Module 'non-top-files.top' is not elaborated"/>
+	</waiver>
 </waivers>
