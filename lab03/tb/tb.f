@@ -1,2 +1,7 @@
 -F ../../common/vdic_dut_2023.f
-vdic_dut_2023_tb.sv
+mult_pkg.sv
+mult_bfm.sv
+tpgen.sv
+coverage.sv
+scoreboard.sv
+top.sv
