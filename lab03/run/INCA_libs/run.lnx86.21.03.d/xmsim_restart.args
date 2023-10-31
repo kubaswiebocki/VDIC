@@ -36,8 +36,6 @@ RNDXCELON
 SAWSTP
 -NOCOPYRIGHT
 -COVOVERWRITE
--COVTEST
-lab03example
 +UVM_TESTNAME=lab03example
 -MESSAGES
 -RUN
@@ -46,7 +44,7 @@ lab03example
 +EMGRLOG
 xrun_test_lab03example.log
 -XLSTIME
-1698525728
+1698790997
 -XLKEEP
 -XLMODE
 ./INCA_libs/run.lnx86.21.03.d
@@ -60,4 +58,4 @@ xrun
 -XLVERSION
 "TOOL:	xrun	21.03-s009"
 -XLNAME
-./INCA_libs/run.lnx86.21.03.d/cadence26_18540
+./INCA_libs/run.lnx86.21.03.d/cadence25_2904

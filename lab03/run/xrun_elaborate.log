@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 28, 2023 at 22:42:07 CEST
+TOOL:	xrun	21.03-s009: Started on Oct 31, 2023 at 23:23:17 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -12,6 +12,7 @@ xrun
 		scoreboard.sv
 		top.sv
 	-v93
+	-define DEBUG
 	+nowarnDSEM2009
 	+nowarnDSEMEL
 	+nowarnCGDEFN
@@ -30,12 +31,11 @@ xrun
 	Elaborating the design hierarchy:
 	Top level design units:
 		mult_pkg
-		coverage
 		top
 
 	Extracting FSMs for coverage:
-		worklib.coverage
 		worklib.tpgen
+		worklib.coverage
 		worklib.scoreboard
 		worklib.top
 	Total FSMs extracted = 0
@@ -44,18 +44,16 @@ xrun
 	Generating native compiled code:
 		worklib.vdic_dut_2023:svp <0x16224cc6>
 			streams:  25, words: 13928
-		worklib.scoreboard:sv <0x0c5648c1>
-			streams:   7, words: 18040
-		worklib.tpgen:sv <0x6c20c33a>
-			streams:   3, words: 11531
-		worklib.top:sv <0x66798b1f>
-			streams:   8, words:   974
-		worklib.coverage:sv <0x7eff3e38>
+		worklib.scoreboard:sv <0x1118e8ad>
+			streams:   7, words: 20728
+		worklib.coverage:sv <0x07099cad>
 			streams:   5, words:  5641
-		worklib.mult_bfm:sv <0x79c0c085>
-			streams:   4, words:  9987
-		worklib.mult_bfm:sv <0x55510e0e>
-			streams:   4, words:  9334
+		worklib.tpgen:sv <0x6d6677f9>
+			streams:   3, words: 11531
+		worklib.top:sv <0x014c77a6>
+			streams:   8, words:   974
+		worklib.mult_bfm:sv <0x7c10fcdf>
+			streams:   4, words: 10778
 xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemverilog enumerated nets and variables inside structures. To enable toggle coverage of these objects, specify the 'set_toggle_scoring -sv_enum -sv_struct_with_enum' command in the coverage configuration file.
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
@@ -63,17 +61,17 @@ xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemveril
 	Design hierarchy summary:
 		                Instances  Unique
 		Modules:                5       5
-		Interfaces:             2       1
+		Interfaces:             1       1
 		Verilog packages:       1       1
-		Registers:             96      76
-		Scalar wires:          14       -
+		Registers:             76      76
+		Scalar wires:          13       -
 		Vectored wires:        10       -
 		Always blocks:          3       3
-		Initial blocks:         5       4
+		Initial blocks:         4       4
 		Final blocks:           1       1
 		Cont. assignments:      8      10
 		Pseudo assignments:     8       8
 		Assertions:             1       1
 		Covergroup Instances:   0       2
-	Writing initial simulation snapshot: worklib.coverage:sv
-TOOL:	xrun	21.03-s009: Exiting on Oct 28, 2023 at 22:42:08 CEST  (total: 00:00:01)
+	Writing initial simulation snapshot: worklib.top:sv
+TOOL:	xrun	21.03-s009: Exiting on Oct 31, 2023 at 23:23:17 CET  (total: 00:00:00)
