@@ -41,15 +41,15 @@ function shortint get_data();
     zero_ones = 3'($random);
 	
     if (zero_ones == 3'b000)
-        return 16'h0000;
+        return 16'sh0000;
     else if (zero_ones == 3'b001) 
-        return 16'h0001;
+        return 16'sh0001;
     else if (zero_ones == 3'b010)
-        return 16'h7FFF;
+        return 16'sh7FFF;
     else if (zero_ones == 3'b100)
-        return 16'hFFFF;
+        return 16'shFFFF;
     else if (zero_ones == 3'b111)
-        return 16'h8000;
+        return 16'sh8000;
     else
         return 16'($random);
 endfunction : get_data
