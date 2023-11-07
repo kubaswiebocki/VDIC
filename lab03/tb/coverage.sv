@@ -50,7 +50,10 @@ covergroup corner_values_on_ops;
     option.name = "cg_corner_values_on_ops";
 
     all_ops : coverpoint op_set {
-        ignore_bins null_ops = {RST_OP};
+        bins valid_data_AB = VALID_A_B;
+        bins invalid_data_AB = INVALID_A_B;
+        bins invalid_A_valid_B = VALID_B_INVALID_A;
+        bins valid_A_invalid_B = VALID_A_INVALID_B;
     }
 
     a_leg: coverpoint arg_a {
@@ -75,73 +78,53 @@ covergroup corner_values_on_ops;
 	    
 	    // #B1 Simulate maximum value for signed data.   
 
-        bins B1_vab_max          = binsof (all_ops) intersect {VALID_A_B} &&
-        (binsof (a_leg.max) || binsof (b_leg.max));
+        bins B1_vab_max          = binsof (all_ops.valid_data_AB) && (binsof (a_leg.max) || binsof (b_leg.max));
 
-        bins B1_iab_max          = binsof (all_ops) intersect {INVALID_A_B} &&
-        (binsof (a_leg.max) || binsof (b_leg.max));
+        bins B1_iab_max          = binsof (all_ops.invalid_data_AB) && (binsof (a_leg.max) || binsof (b_leg.max));
 
-        bins B1_vbia_max         = binsof (all_ops) intersect {VALID_B_INVALID_A} &&
-        (binsof (a_leg.max) || binsof (b_leg.max));
+        bins B1_vbia_max         = binsof (all_ops.invalid_A_valid_B) && (binsof (a_leg.max) || binsof (b_leg.max));
 
-        bins B1_vaib_max         = binsof (all_ops) intersect {VALID_A_INVALID_B} &&
-        (binsof (a_leg.max) || binsof (b_leg.max));
+        bins B1_vaib_max         = binsof (all_ops.valid_A_invalid_B) && (binsof (a_leg.max) || binsof (b_leg.max));
 	    
 	    // #B2 Simulate minimum value for signed data.   
 
-        bins B2_vab_min          = binsof (all_ops) intersect {VALID_A_B} &&
-        (binsof (a_leg.min) || binsof (b_leg.min));
+        bins B2_vab_min          = binsof (all_ops.valid_data_AB) && (binsof (a_leg.min) || binsof (b_leg.min));
 
-        bins B2_iab_min          = binsof (all_ops) intersect {INVALID_A_B} &&
-        (binsof (a_leg.min) || binsof (b_leg.min));
+        bins B2_iab_min          = binsof (all_ops.invalid_data_AB) && (binsof (a_leg.min) || binsof (b_leg.min));
 
-        bins B2_vbia_min         = binsof (all_ops) intersect {VALID_B_INVALID_A} &&
-        (binsof (a_leg.min) || binsof (b_leg.min));
+        bins B2_vbia_min         = binsof (all_ops.invalid_A_valid_B) && (binsof (a_leg.min) || binsof (b_leg.min));
 
-        bins B2_vaib_min         = binsof (all_ops) intersect {VALID_A_INVALID_B} &&
-        (binsof (a_leg.min) || binsof (b_leg.min));
+        bins B2_vaib_min         = binsof (all_ops.valid_A_invalid_B) && (binsof (a_leg.min) || binsof (b_leg.min));
 	    
 	    // #B3 Simulate one value for signed data.   
 
-        bins B3_vab_one          = binsof (all_ops) intersect {VALID_A_B} &&
-        (binsof (a_leg.one) || binsof (b_leg.one));
+        bins B3_vab_one          = binsof (all_ops.valid_data_AB) && (binsof (a_leg.one) || binsof (b_leg.one));
 
-        bins B3_iab_one          = binsof (all_ops) intersect {INVALID_A_B} &&
-        (binsof (a_leg.one) || binsof (b_leg.one));
+        bins B3_iab_one          = binsof (all_ops.invalid_data_AB) && (binsof (a_leg.one) || binsof (b_leg.one));
 
-        bins B3_vbia_one         = binsof (all_ops) intersect {VALID_B_INVALID_A} &&
-        (binsof (a_leg.one) || binsof (b_leg.one));
+        bins B3_vbia_one         = binsof (all_ops.invalid_A_valid_B) && (binsof (a_leg.one) || binsof (b_leg.one));
 
-        bins B3_vaib_one         = binsof (all_ops) intersect {VALID_A_INVALID_B} &&
-        (binsof (a_leg.one) || binsof (b_leg.one));
+        bins B3_vaib_one         = binsof (all_ops.valid_A_invalid_B) && (binsof (a_leg.one) || binsof (b_leg.one));
 
 	    // #B4 Simulate minus one value for signed data.   
 
-        bins B4_vab_mone          = binsof (all_ops) intersect {VALID_A_B} &&
-        (binsof (a_leg.minus_one) || binsof (b_leg.minus_one));
+        bins B4_vab_mone          = binsof (all_ops.valid_data_AB) && (binsof (a_leg.minus_one) || binsof (b_leg.minus_one));
 
-        bins B4_iab_mone          = binsof (all_ops) intersect {INVALID_A_B} &&
-        (binsof (a_leg.minus_one) || binsof (b_leg.minus_one));
+        bins B4_iab_mone          = binsof (all_ops.invalid_data_AB) && (binsof (a_leg.minus_one) || binsof (b_leg.minus_one));
 
-        bins B4_vbia_mone         = binsof (all_ops) intersect {VALID_B_INVALID_A} &&
-        (binsof (a_leg.minus_one) || binsof (b_leg.minus_one));
+        bins B4_vbia_mone         = binsof (all_ops.invalid_A_valid_B) && (binsof (a_leg.minus_one) || binsof (b_leg.minus_one));
 
-        bins B4_vaib_mone         = binsof (all_ops) intersect {VALID_A_INVALID_B} &&
-        (binsof (a_leg.minus_one) || binsof (b_leg.minus_one));
+        bins B4_vaib_mone         = binsof (all_ops.valid_A_invalid_B) && (binsof (a_leg.minus_one) || binsof (b_leg.minus_one));
 	    
         // #B5 simulate zeros values
 
-        bins B5_vab_0          = binsof (all_ops) intersect {VALID_A_B} &&
-        (binsof (a_leg.zeros) || binsof (b_leg.zeros));
+        bins B5_vab_0          = binsof (all_ops.valid_data_AB) && (binsof (a_leg.zeros) || binsof (b_leg.zeros));
 
-        bins B5_iab_0          = binsof (all_ops) intersect {INVALID_A_B} &&
-        (binsof (a_leg.zeros) || binsof (b_leg.zeros));
+        bins B5_iab_0          = binsof (all_ops.invalid_data_AB) && (binsof (a_leg.zeros) || binsof (b_leg.zeros));
 
-        bins B5_vbia_0          = binsof (all_ops) intersect {VALID_B_INVALID_A} &&
-        (binsof (a_leg.zeros) || binsof (b_leg.zeros));
+        bins B5_vbia_0          = binsof (all_ops.invalid_A_valid_B) && (binsof (a_leg.zeros) || binsof (b_leg.zeros));
 
-        bins B5_vaib_0          = binsof (all_ops) intersect {VALID_A_INVALID_B} &&
-        (binsof (a_leg.zeros) || binsof (b_leg.zeros));
+        bins B5_vaib_0          = binsof (all_ops.valid_A_invalid_B) && (binsof (a_leg.zeros) || binsof (b_leg.zeros));
 	    
 	    
         ignore_bins others_only =
