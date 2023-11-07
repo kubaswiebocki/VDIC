@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Oct 31, 2023 at 23:23:17 CET
+TOOL:	xrun	21.03-s009: Started on Nov 08, 2023 at 00:12:21 CET
 xrun
 	-elaborate
 	-l xrun_elaborate.log
@@ -12,7 +12,6 @@ xrun
 		scoreboard.sv
 		top.sv
 	-v93
-	-define DEBUG
 	+nowarnDSEM2009
 	+nowarnDSEMEL
 	+nowarnCGDEFN
@@ -44,16 +43,16 @@ xrun
 	Generating native compiled code:
 		worklib.vdic_dut_2023:svp <0x16224cc6>
 			streams:  25, words: 13928
-		worklib.scoreboard:sv <0x1118e8ad>
-			streams:   7, words: 20728
-		worklib.coverage:sv <0x07099cad>
-			streams:   5, words:  5641
-		worklib.tpgen:sv <0x6d6677f9>
+		worklib.scoreboard:sv <0x2c88f4e6>
+			streams:   7, words: 17278
+		worklib.coverage:sv <0x1d90760f>
+			streams:   5, words:  6484
+		worklib.tpgen:sv <0x51d9b308>
 			streams:   3, words: 11531
-		worklib.top:sv <0x014c77a6>
+		worklib.top:sv <0x7d2fef4c>
 			streams:   8, words:   974
-		worklib.mult_bfm:sv <0x7c10fcdf>
-			streams:   4, words: 10778
+		worklib.mult_bfm:sv <0x2a61f784>
+			streams:   4, words: 10228
 xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemverilog enumerated nets and variables inside structures. To enable toggle coverage of these objects, specify the 'set_toggle_scoring -sv_enum -sv_struct_with_enum' command in the coverage configuration file.
 	Building instance specific data structures.
 	Performing constant object marking (COM) analysis.
@@ -63,7 +62,7 @@ xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemveril
 		Modules:                5       5
 		Interfaces:             1       1
 		Verilog packages:       1       1
-		Registers:             76      76
+		Registers:             75      75
 		Scalar wires:          13       -
 		Vectored wires:        10       -
 		Always blocks:          3       3
@@ -71,7 +70,6 @@ xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemveril
 		Final blocks:           1       1
 		Cont. assignments:      8      10
 		Pseudo assignments:     8       8
-		Assertions:             1       1
 		Covergroup Instances:   0       2
 	Writing initial simulation snapshot: worklib.top:sv
-TOOL:	xrun	21.03-s009: Exiting on Oct 31, 2023 at 23:23:17 CET  (total: 00:00:00)
+TOOL:	xrun	21.03-s009: Exiting on Nov 08, 2023 at 00:12:22 CET  (total: 00:00:01)
