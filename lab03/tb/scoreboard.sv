@@ -117,7 +117,7 @@ bit                  arg_parity_error_scoreboard;
 data_packet_t               sb_data_q   [$];
 
 always @(posedge bfm.clk) begin:scoreboard_fe_blk
-    if(bfm.req == 1) begin
+    if(bfm.req) begin
         case(bfm.op_set)
             VALID_A_B, INVALID_A_B, VALID_B_INVALID_A, VALID_A_INVALID_B: begin
 	            get_expected(bfm.arg_a, bfm.arg_b, bfm.op_set, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard);
@@ -136,7 +136,7 @@ always @(negedge bfm.clk) begin : scoreboard_be_blk
         data_packet_t dp;
         dp = sb_data_q.pop_back();
 	    if(dp.op_set !== RST_OP) begin
-	        CHK_verify: assert((bfm.result === dp.result) & (bfm.result_parity === dp.result_parity) & (bfm.arg_parity_error === dp.arg_parity_error)) begin
+	        if((bfm.result === dp.result) & (bfm.result_parity === dp.result_parity) & (bfm.arg_parity_error === dp.arg_parity_error)) begin
 	           `ifdef DEBUG
 	            $display("%0t Test passed for arg_a=%0d, arg_a_parity=%0d, arg_b=%0d, arg_b_parity=%0d, op_set=%0d", $time, dp.arg_a, dp.arg_a_parity, dp.arg_b, dp.arg_b_parity, dp.op_set);
 		        `endif
