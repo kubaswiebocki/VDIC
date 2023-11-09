@@ -13,9 +13,10 @@ UVM_PLI
 ../tb/mult_pkg.sv
 ../tb/mult_bfm.sv
 ../tb/tpgen.sv
-../tb/coverage.sv
 ../tb/scoreboard.sv
 ../tb/top.sv
+-DEFINE
+DEBUG
 -NOWARN
 DSEM2009
 -NOWARN

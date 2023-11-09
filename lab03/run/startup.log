@@ -1,0 +1,7 @@
+java.lang.NullPointerException
+	at com.cadence.ufi.gui.app.configuration.LookAndFeelConfiguration.getInstance(LookAndFeelConfiguration.java:622)
+	at com.cadence.ufi.gui.app.managers.GUFILookAndFeelManager.setLookAndFeel(GUFILookAndFeelManager.java:54)
+	at com.cadence.ufi.gui.app.managers.GUFILookAndFeelManager.<init>(GUFILookAndFeelManager.java:46)
+	at com.cadence.ufi.GUFIManager.getLookAndFeelManager(GUFIManager.java:127)
+	at com.cadence.ufi.GUFIManager.runMain(GUFIManager.java:416)
+	at com.cadence.mdv.imc.Main.main(Main.java:493)

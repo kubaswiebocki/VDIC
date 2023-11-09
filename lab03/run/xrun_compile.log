@@ -1,4 +1,4 @@
-TOOL:	xrun	21.03-s009: Started on Nov 08, 2023 at 00:12:21 CET
+TOOL:	xrun	21.03-s009: Started on Nov 09, 2023 at 08:13:27 CET
 xrun
 	-compile
 	-l xrun_compile.log
@@ -8,10 +8,10 @@ xrun
 		mult_pkg.sv
 		mult_bfm.sv
 		tpgen.sv
-		coverage.sv
 		scoreboard.sv
 		top.sv
 	-v93
+	-define DEBUG
 	+nowarnDSEM2009
 	+nowarnDSEMEL
 	+nowarnCGDEFN
@@ -38,13 +38,10 @@ file: ../tb/mult_bfm.sv
 file: ../tb/tpgen.sv
 	module worklib.tpgen:sv
 		errors: 0, warnings: 0
-file: ../tb/coverage.sv
-	module worklib.coverage:sv
-		errors: 0, warnings: 0
 file: ../tb/scoreboard.sv
 	module worklib.scoreboard:sv
 		errors: 0, warnings: 0
 file: ../tb/top.sv
 	module worklib.top:sv
 		errors: 0, warnings: 0
-TOOL:	xrun	21.03-s009: Exiting on Nov 08, 2023 at 00:12:21 CET  (total: 00:00:00)
+TOOL:	xrun	21.03-s009: Exiting on Nov 09, 2023 at 08:13:27 CET  (total: 00:00:00)
