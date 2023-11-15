@@ -1,21 +1,37 @@
-typedef struct packed {
-    real x;
-    real y;
-} point;
+typedef struct {
+
+	real x;
+	real y;
+
+} coordinates_struct;
+
 
 virtual class shape_c;
+
 	protected string name;
-	protected real points[1:0];
+	protected coordinates_struct points[$];
 	
-	function new(string n, real x, real y);
-		name = n;
-		points[0] = x;
-		points[1] = y;
+	function new(string n, coordinates_struct pq[$]);
+		name   = n;
+		points = pq;
 	endfunction : new
-	
+
 	pure virtual function real get_area();
-	
-	function string print();
+
+	virtual function void print();
+		$display("---------------------------------------------------------------------------------");
+		$display("This is: %s",name);
+
+		foreach (points[i]) begin
+			$display("(%0.2f %0.2f)",points[i].x, points[i].y);
+		end
 		
+		if (get_area() != 0.0) begin
+			$display("Area is: %0.2f", get_area());
+		end
+		else begin
+			$display("Area is: can not be calculated for generic polygon");
+		end
 	endfunction : print
+
 endclass : shape_c
