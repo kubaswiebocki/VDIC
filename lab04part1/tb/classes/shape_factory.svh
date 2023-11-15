@@ -11,32 +11,32 @@ class shape_factory;
 		polygon_c polygon_o;
 
 		coordinates_struct points_q[$];
-		coordinates_struct points_q_copy[$];
+		coordinates_struct points_q_tmp[$];
 
 		static int ctr_local = 0;
-		coordinates_struct point1;
-		coordinates_struct point2;
-		coordinates_struct point3;
-		coordinates_struct point4;
-		real diameter1 = 0.0;
-		real diameter2 = 0.0;
+		coordinates_struct p1;
+		coordinates_struct p2;
+		coordinates_struct p3;
+		coordinates_struct p4;
+		real d1 = 0.0;
+		real d2 = 0.0;
 
-		points_q_copy = p;
+		points_q_tmp = p;
 
 		ctr_local = 0;
 
 		foreach(p[i]) ctr_local++;
 
-		point1 = points_q_copy.pop_front();
-		point2 = points_q_copy.pop_front();
-		point3 = points_q_copy.pop_front();
-		point4 = points_q_copy.pop_front();
+		p1 = points_q_tmp.pop_front();
+		p2 = points_q_tmp.pop_front();
+		p3 = points_q_tmp.pop_front();
+		p4 = points_q_tmp.pop_front();
 
-		diameter1 = ((point1.x - point3.x)**2 + (point1.y - point3.y)**2)**0.5;
-		diameter2 = ((point2.x - point4.x)**2 + (point2.y - point4.y)**2)**0.5;
+		d1 = ((p1.x - p3.x)**2 + (p1.y - p3.y)**2)**0.5;
+		d2 = ((p2.x - p4.x)**2 + (p2.y - p4.y)**2)**0.5;
 
 		//  check if rectangle
-		if (ctr_local == 4 && diameter1 != diameter2) ctr_local = 5;
+		if (ctr_local == 4 && d1 != d2) ctr_local = 5;
 
 		case (ctr_local)
 			CIRCLE:

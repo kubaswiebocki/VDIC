@@ -5,25 +5,25 @@ class rectangle_c extends shape_c;
 	endfunction : new
 
 	function real get_area();
-		coordinates_struct r_coords1;
-		coordinates_struct r_coords2;
-		coordinates_struct r_coords3;
-		coordinates_struct r_coords4;
-		coordinates_struct points_copy[$];
+		coordinates_struct r_c1;
+		coordinates_struct r_c2;
+		coordinates_struct r_c3;
+		coordinates_struct r_c4;
+		coordinates_struct points_tmp[$];
 		real area   = 0.0;
-		real side1 = 0.0;
-		real side2 = 0.0;
+		real s1 = 0.0;
+		real s2 = 0.0;
 
-		points_copy = points;
-		r_coords1 = points_copy.pop_front();
-		r_coords2 = points_copy.pop_front();
-		r_coords3 = points_copy.pop_front();
-		r_coords4 = points_copy.pop_front();
+		points_tmp = points;
+		r_c1 = points_tmp.pop_front();
+		r_c2 = points_tmp.pop_front();
+		r_c3 = points_tmp.pop_front();
+		r_c4 = points_tmp.pop_front();
 
-		side1 = get_distance(r_coords1,r_coords2);
-		side2 = get_distance(r_coords2,r_coords3);
-
-		return side1 * side2;
+		s1 = get_distance(r_c1,r_c2);
+		s2 = get_distance(r_c2,r_c3);
+		area = s1 * s2;
+		return area;
 	endfunction : get_area
 
 endclass : rectangle_c

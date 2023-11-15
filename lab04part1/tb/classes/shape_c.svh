@@ -23,7 +23,7 @@ virtual class shape_c;
 		foreach (points[i]) begin
 			$display("(%0.2f %0.2f)",points[i].x, points[i].y);
 		end
-		
+
 		if (get_area() != 0.0) begin
 			$display("Area is: %0.2f", get_area());
 		end
@@ -33,7 +33,8 @@ virtual class shape_c;
 	endfunction : print
 
 	function real get_distance(coordinates_struct point1, coordinates_struct point2);
-		return ((point1.x - point2.x)**2 + (point1.y - point2.y)**2)**0.5;
+		real distance = ((point1.x - point2.x)**2 + (point1.y - point2.y)**2)**0.5;
+		return distance;
 	endfunction  : get_distance
 	
 endclass : shape_c

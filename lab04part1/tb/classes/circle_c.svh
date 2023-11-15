@@ -6,15 +6,15 @@ class circle_c extends shape_c;
 
 	function real get_radius();
 
-		coordinates_struct points_copy[$];
-		coordinates_struct coords1;
-		coordinates_struct coords2;
+		coordinates_struct points_tmp[$];
+		coordinates_struct c1;
+		coordinates_struct c2;
 		real radius = 0.0;
 
-		points_copy = points;
-		coords1 = points_copy.pop_front();
-		coords2 = points_copy.pop_front();
-		radius = get_distance(coords1, coords2);
+		points_tmp = points;
+		c1 = points_tmp.pop_front();
+		c2 = points_tmp.pop_front();
+		radius = get_distance(c1, c2);
 
 		return radius;
 	endfunction : get_radius
@@ -35,15 +35,15 @@ class circle_c extends shape_c;
 
 	function real get_area();
 
-		coordinates_struct circle_coords1;
-		coordinates_struct circle_coords2;
-		coordinates_struct points_copy[$];
+		coordinates_struct cc1;
+		coordinates_struct cc2;
+		coordinates_struct points_tmp[$];
 		real area   = 0.0;
 		real radius   = 0.0;
 
-		points_copy = points;
-		circle_coords1 = points_copy.pop_front();
-		circle_coords2 = points_copy.pop_front();
+		points_tmp = points;
+		cc1 = points_tmp.pop_front();
+		cc2 = points_tmp.pop_front();
 
 		radius = get_radius();
 		area = 3.1415 * radius**2;
