@@ -1,8 +1,6 @@
 typedef struct {
-
 	real x;
 	real y;
-
 } coordinates_struct;
 
 
