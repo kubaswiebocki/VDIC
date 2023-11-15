@@ -2,11 +2,7 @@
 // File created by:  xrun
 // Do not modify this file
 //
-/home/student/jswiebocki/VDIC/lab04part1/tb/classes/shape_c.svh
-/home/student/jswiebocki/VDIC/lab04part1/tb/classes/polygon_c.svh
-/home/student/jswiebocki/VDIC/lab04part1/tb/classes/rectangle_c.svh
-/home/student/jswiebocki/VDIC/lab04part1/tb/classes/triangle_c.svh
-/home/student/jswiebocki/VDIC/lab04part1/tb/classes/circle_c.svh
-/home/student/jswiebocki/VDIC/lab04part1/tb/classes/shape_factory.svh
-/home/student/jswiebocki/VDIC/lab04part1/tb/classes/shape_reporter.svh
-/home/student/jswiebocki/VDIC/lab04part1/tb/top.sv
+/home/student/jswiebocki/VDIC/lab04part2/tb/mult_pkg.sv
+/home/student/jswiebocki/VDIC/lab04part2/tb/mult_bfm.sv
+/home/student/jswiebocki/VDIC/common/vdic_dut_2023.svp
+/home/student/jswiebocki/VDIC/lab04part2/tb/top.sv

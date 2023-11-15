@@ -1,0 +1,6 @@
+./coverage.svh
+./tpgen.svh
+./scoreboard.svh
+./testbench.svh
+./mult_macros.svh
+lab04part2/tb/tb_classes/mult_macros.svh
