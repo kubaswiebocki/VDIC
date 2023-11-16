@@ -13,7 +13,7 @@ class shape_factory;
 		coordinates_struct points_q[$];
 		coordinates_struct points_q_tmp[$];
 
-		static int ctr_local = 0;
+		static int ctr_local;
 		coordinates_struct p1;
 		coordinates_struct p2;
 		coordinates_struct p3;

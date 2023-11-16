@@ -1,7 +1,7 @@
 class shape_reporter #(type T = shape_c);
 
 	protected static T storage[$];
-	static int i = 0;
+	protected static int i = 0;
 	//-------------------------
 	static function void shapes_storage(T l);
 

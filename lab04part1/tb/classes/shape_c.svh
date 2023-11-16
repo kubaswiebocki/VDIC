@@ -32,8 +32,8 @@ virtual class shape_c;
 		end
 	endfunction : print
 
-	function real get_distance(coordinates_struct point1, coordinates_struct point2);
-		real distance = ((point1.x - point2.x)**2 + (point1.y - point2.y)**2)**0.5;
+	function real get_distance(coordinates_struct p1, coordinates_struct p2);
+		real distance = ((p1.x - p2.x)**2 + (p1.y - p2.y)**2)**0.5;
 		return distance;
 	endfunction  : get_distance
 	

@@ -4,7 +4,7 @@ class circle_c extends shape_c;
 		super.new(n, p);
 	endfunction : new
 
-	function real get_radius();
+	protected function real get_radius();
 
 		coordinates_struct points_tmp[$];
 		coordinates_struct c1;

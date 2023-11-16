@@ -8,7 +8,7 @@ module top;
 	string line;
 	string input_str = "";
 	int c = 0;
-	int i= 0;
+	int i;
 	
 	initial begin
 		static int file = $fopen(filename, "r");
