@@ -13,7 +13,9 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-class coverage;
+class coverage extends uvm_component;
+    `uvm_component_utils(coverage)
+    
 	protected virtual mult_bfm bfm;
 
 	protected shortint          arg_a;
@@ -132,16 +134,26 @@ class coverage;
 	
 	endgroup
 
-
-    function new (virtual mult_bfm b);
+	//------------------------------------------------------------------------------
+	// constructor
+	//------------------------------------------------------------------------------
+    function new (string name, uvm_component parent);
+        super.new(name, parent);
         op_cov               = new();
         corner_values_on_ops = new();
-        bfm                  = b;
     endfunction : new
 
-    task execute();
+	//------------------------------------------------------------------------------
+	// build phase
+	//------------------------------------------------------------------------------
+    function void build_phase(uvm_phase phase);
+        if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
+            $fatal(1,"Failed to get BFM");
+    endfunction : build_phase
+    
+    task run_phase(uvm_phase phase);
         forever begin : sampling_block
-            @(posedge bfm.clk);
+            @(negedge bfm.clk);
 	        arg_a = bfm.arg_a;
 	    	arg_a_parity = bfm.arg_a_parity;
 	    	arg_b = bfm.arg_b;
@@ -150,11 +162,10 @@ class coverage;
             op_cov.sample();
             corner_values_on_ops.sample();
         end : sampling_block
-    endtask : execute
+    endtask : run_phase
+
 
 endclass : coverage
-
-
 
 
 

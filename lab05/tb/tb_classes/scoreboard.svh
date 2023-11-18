@@ -14,7 +14,8 @@
  limitations under the License.
  */
 
-class scoreboard;
+class scoreboard extends uvm_component;
+    `uvm_component_utils(scoreboard)
 
 
     protected typedef enum bit {
@@ -57,10 +58,9 @@ class scoreboard;
 //------------------------------------------------------------------------------
 // constructor
 //------------------------------------------------------------------------------
-    function new (virtual mult_bfm b);
-        bfm = b;
+    function new (string name, uvm_component parent);
+        super.new(name, parent);
     endfunction : new
-
 	//------------------------------------------------------------------------------
 	// calculate expected result
 	//------------------------------------------------------------------------------
@@ -158,33 +158,23 @@ class scoreboard;
         end : scoreboard_be_blk
     endtask
 
-    task execute();
+//------------------------------------------------------------------------------
+// build phase
+//------------------------------------------------------------------------------
+    function void build_phase(uvm_phase phase);
+        if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
+            $fatal(1,"Failed to get BFM");
+    endfunction : build_phase
+
+//------------------------------------------------------------------------------
+// run phase
+//------------------------------------------------------------------------------
+    task run_phase(uvm_phase phase);
         fork
             store_cmd();
             process_data_from_dut();
         join_none
-    endtask
-//------------------------------------------------------------------------------
-// used to modify the color printed on the terminal
-//------------------------------------------------------------------------------
-
-    protected function void set_print_color ( print_color c );
-        string ctl;
-        case(c)
-            COLOR_BOLD_BLACK_ON_GREEN : ctl  = "\033\[1;30m\033\[102m";
-            COLOR_BOLD_BLACK_ON_RED : ctl    = "\033\[1;30m\033\[101m";
-            COLOR_BOLD_BLACK_ON_YELLOW : ctl = "\033\[1;30m\033\[103m";
-            COLOR_BOLD_BLUE_ON_WHITE : ctl   = "\033\[1;34m\033\[107m";
-            COLOR_BLUE_ON_WHITE : ctl        = "\033\[0;34m\033\[107m";
-            COLOR_DEFAULT : ctl              = "\033\[0m\n";
-            default : begin
-                $error("set_print_color: bad argument");
-                ctl                          = "";
-            end
-        endcase
-        $write(ctl);
-    endfunction
-
+    endtask : run_phase
 //------------------------------------------------------------------------------
 // print the PASSED/FAILED in color
 //------------------------------------------------------------------------------
@@ -208,11 +198,12 @@ class scoreboard;
     endfunction
 
 //------------------------------------------------------------------------------
-// print the test result at the simulation end
+// report phase
 //------------------------------------------------------------------------------
-    function void print_result();
+    function void report_phase(uvm_phase phase);
+        super.report_phase(phase);
         print_test_result(tr);
-    endfunction
+    endfunction : report_phase
 
 endclass : scoreboard
 

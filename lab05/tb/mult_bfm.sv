@@ -31,8 +31,6 @@ wire		result_rdy;
 wire		arg_parity_error;
 
 operation_t op_set;
-
-modport tlm (import reset_mult, send_op);
     
 //------------------------------------------------------------------------------
 // clock generator  
