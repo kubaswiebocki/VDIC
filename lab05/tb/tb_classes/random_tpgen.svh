@@ -12,23 +12,7 @@ class random_tpgen extends base_tpgen;
 // function: get_data - generate random data for the tpgen
 //------------------------------------------------------------------------------
 	protected function shortint get_data();
-	
-	    bit [2:0] zero_ones;
-	
-	    zero_ones = 3'($random);
-		
-	    if (zero_ones == 3'b000)
-	        return 16'sh0000;
-	    else if (zero_ones == 3'b001) 
-	        return 16'sh0001;
-	    else if (zero_ones == 3'b010)
-	        return 16'sh7FFF;
-	    else if (zero_ones == 3'b100)
-	        return 16'shFFFF;
-	    else if (zero_ones == 3'b111)
-	        return 16'sh8000;
-	    else
-	        return 16'($random);
+	    return 16'($random);
 	endfunction : get_data
 
 //------------------------------------------------------------------------------
