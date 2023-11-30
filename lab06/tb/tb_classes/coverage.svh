@@ -13,7 +13,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-class coverage extends uvm_component;
+class coverage extends uvm_subscriber #(command_s);
     `uvm_component_utils(coverage)
     
 	protected virtual mult_bfm bfm;
@@ -144,25 +144,18 @@ class coverage extends uvm_component;
     endfunction : new
 
 	//------------------------------------------------------------------------------
-	// build phase
+	// subsriber write function
 	//------------------------------------------------------------------------------
-    function void build_phase(uvm_phase phase);
-        if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
-            $fatal(1,"Failed to get BFM");
-    endfunction : build_phase
-    
-    task run_phase(uvm_phase phase);
-        forever begin : sampling_block
-            @(negedge bfm.clk);
-	        arg_a = bfm.arg_a;
-	    	arg_a_parity = bfm.arg_a_parity;
-	    	arg_b = bfm.arg_b;
-	    	arg_b_parity = bfm.arg_b_parity;
-	    	op_set = bfm.op_set;
-            op_cov.sample();
-            corner_values_on_ops.sample();
-        end : sampling_block
-    endtask : run_phase
+
+    function void write(command_s t);
+        arg_a = t.arg_a;
+    	arg_b = t.arg_b;
+	    arg_a_parity = t.arg_a_parity;
+    	arg_b_parity = t.arg_b_parity;
+    	op_set = t.op;
+        op_cov.sample();
+        corner_values_on_ops.sample();
+    endfunction : write
 
 
 endclass : coverage

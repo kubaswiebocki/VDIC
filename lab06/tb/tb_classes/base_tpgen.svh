@@ -2,12 +2,10 @@ virtual class base_tpgen extends uvm_component;
 
 // The macro is not there as we never instantiate/use the base_tpgen
 //    `uvm_component_utils(base_tpgen)
-
 //------------------------------------------------------------------------------
-// local variables
+// port for sending the transactions
 //------------------------------------------------------------------------------
-    protected virtual mult_bfm bfm;
-
+    uvm_put_port #(command_s) command_port;
 //------------------------------------------------------------------------------
 // constructor
 //------------------------------------------------------------------------------
@@ -25,40 +23,30 @@ virtual class base_tpgen extends uvm_component;
 // build phase
 //------------------------------------------------------------------------------
     function void build_phase(uvm_phase phase);
-        if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
-            $fatal(1,"Failed to get BFM");
+        command_port = new("command_port", this);
     endfunction : build_phase
 
 //------------------------------------------------------------------------------
 // run phase
 //------------------------------------------------------------------------------
     task run_phase(uvm_phase phase);
-	    shortint arg_a;
-		shortint arg_b;
-	    operation_t op_set;
-	    int result;
-		bit result_parity;
-		bit arg_parity_error;	
-		bit arg_a_parity;	
-		bit arg_b_parity;	
+	    command_s command;
 
         phase.raise_objection(this);
+	    command.op = RST_OP;
+        command_port.put(command);
+	    
+	    repeat (10000) begin : random_loop
+	        command.op = get_op();
+		    command.arg_a 	= get_data();
+		    command.arg_b 	= get_data();
 
-        bfm.reset_mult();
-
-	    repeat (1000) begin : random_loop
-	        op_set = get_op();
-		    arg_a 	= get_data();
-		    arg_b 	= get_data();
-			bfm.send_op(arg_a, arg_b, op_set, result, result_parity, arg_parity_error, arg_a_parity, arg_b_parity);
-	        bfm.req	= 1'b1;  
-	        while(!bfm.ack)@(negedge bfm.clk);
-	    	bfm.req = 1'b0;
-	        while(!bfm.result_rdy)@(negedge bfm.clk);        
+		    command_port.put(command);
 	    end : random_loop
-
-//      #500;
-
+	    #500;
+	    command.op = RST_OP;
+	    command_port.put(command);
+	    
         phase.drop_objection(this);
 
     endtask : run_phase

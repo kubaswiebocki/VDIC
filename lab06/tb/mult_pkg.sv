@@ -1,18 +1,3 @@
-/*
- Copyright 2013 Ray Salemi
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- */
 `timescale 1ns/1ps
 
 package mult_pkg;
@@ -28,6 +13,22 @@ package mult_pkg;
 	    VALID_B_INVALID_A 	= 3'b100
 	} operation_t;
 
+    // MULT data packet
+    typedef struct packed {
+	    bit			arg_a_parity;
+	    bit 		arg_b_parity;
+        shortint	arg_a;
+        shortint	arg_b;
+        operation_t op;
+    } command_s;
+
+    // Results data packet
+    typedef struct packed {
+        int			result;
+		bit			result_parity;
+		bit			arg_parity_error;
+    } results_s;
+	
 	typedef enum {
         COLOR_BOLD_BLACK_ON_GREEN,
         COLOR_BOLD_BLACK_ON_RED,
@@ -58,10 +59,15 @@ package mult_pkg;
 	// testbench classes
 	//------------------------------------------------------------------------------
 	`include "coverage.svh"
-	`include "scoreboard.svh"
 	`include "base_tpgen.svh"
 	`include "random_tpgen.svh"
 	`include "corners_tpgen.svh"
+	
+	`include "scoreboard.svh"
+	`include "driver.svh"
+	
+	`include "command_monitor.svh"
+	`include "result_monitor.svh"
 	`include "env.svh"
 	
 	//------------------------------------------------------------------------------

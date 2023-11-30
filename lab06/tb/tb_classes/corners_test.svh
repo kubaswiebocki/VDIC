@@ -14,9 +14,6 @@ class corners_test extends random_test;
     function void build_phase(uvm_phase phase);
         
         super.build_phase(phase);
-
-        // set the factory to produce a corner_tpgen whenever it would produce
-        // a random_tpgen
         random_tpgen::type_id::set_type_override(corners_tpgen::get_type());
 
     endfunction : build_phase

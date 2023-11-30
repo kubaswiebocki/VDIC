@@ -23,10 +23,10 @@ class random_test extends uvm_test;
 //------------------------------------------------------------------------------
 // start-of-simulation-phase
 //------------------------------------------------------------------------------
-    virtual function void start_of_simulation_phase(uvm_phase phase);
-        super.start_of_simulation_phase(phase);
+    virtual function void end_of_elaboration_phase(uvm_phase phase);
+        super.end_of_elaboration_phase(phase);
         // Print the test topology
-        uvm_top.print_topology();
-    endfunction : start_of_simulation_phase
+        this.print();
+    endfunction : end_of_elaboration_phase
 
 endclass

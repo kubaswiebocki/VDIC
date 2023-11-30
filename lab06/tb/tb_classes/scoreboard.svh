@@ -1,20 +1,4 @@
-/*
- Copyright 2013 Ray Salemi
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- */
-
-class scoreboard extends uvm_component;
+class scoreboard extends uvm_subscriber #(results_s);
     `uvm_component_utils(scoreboard)
 
 
@@ -32,149 +16,21 @@ class scoreboard extends uvm_component;
 	    COLOR_DEFAULT
 	} print_color;
 
-	protected typedef struct packed {
-	    shortint arg_a;
-	    shortint arg_b;
-		bit arg_a_parity;
-		bit arg_b_parity;
-	    operation_t op_set;
-	    int result;
-		bit result_parity;
-		bit arg_parity_error;
-	} data_packet_t;
-	
 //------------------------------------------------------------------------------
 // local variables
 //------------------------------------------------------------------------------
-    protected virtual mult_bfm bfm;
-    protected test_result tr = TEST_PASSED; // the result of the current test
+//    virtual tinyalu_bfm bfm;
+    uvm_tlm_analysis_fifo #(command_s) cmd_f;
 
-    // fifo for storing input and expected data
-    protected data_packet_t sb_data_q [$];
-	
-	protected int                  result_scoreboard;
-	protected bit                  result_parity_scoreboard;
-	protected bit                  arg_parity_error_scoreboard;
+    protected test_result tr = TEST_PASSED; // the result of the current test
+    
 //------------------------------------------------------------------------------
 // constructor
 //------------------------------------------------------------------------------
     function new (string name, uvm_component parent);
         super.new(name, parent);
     endfunction : new
-	//------------------------------------------------------------------------------
-	// calculate expected result
-	//------------------------------------------------------------------------------
-	protected task get_expected(
-			input shortint	arg_a,
-			input shortint	arg_b,
-			input operation_t	op_set,
-			
-			output int    	    result,
-			output bit			result_parity,
-			output bit			arg_parity_error
-		);
-	
-	`ifdef DEBUG
-		$display("%0t DEBUG: get_excepted(%0d,%0d)", $time, arg_a, arg_b);
-	`endif
-		
-		case(op_set)
-			VALID_A_B:
-			begin
-				result				= arg_a * arg_b;
-				arg_parity_error	= 1'b0;
-				result_parity    	= ^result;
-			end
-			INVALID_A_B:
-			begin
-				result				= 32'b0;
-				arg_parity_error	= 1'b1;
-				result_parity    	= ^result;
-			end
-			VALID_A_INVALID_B:
-			begin
-				result				= 32'b0;
-				arg_parity_error	= 1'b1;
-				result_parity    	= ^result;
-			end
-			VALID_B_INVALID_A:
-			begin
-				result				= 32'b0;
-				arg_parity_error	= 1'b1;
-				result_parity    	= ^result;
-			end	
-			default:
-			begin
-				$display("%0t INTERNAL ERROR. get_expected: unexpected case argument: %s", $time, op_set);
-				tr = TEST_FAILED;
-			end
-		endcase
-	endtask : get_expected
-
-
-//------------------------------------------------------------------------------
-// data registering and checking
-//------------------------------------------------------------------------------
-    protected task store_cmd();
-        forever begin:scoreboard_fe_blk
-            @(posedge bfm.clk);
-            if(bfm.req) begin
-                case(bfm.op_set)
-            		VALID_A_B, INVALID_A_B, VALID_B_INVALID_A, VALID_A_INVALID_B: begin
-	            		get_expected(bfm.arg_a, bfm.arg_b, bfm.op_set, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard);
-                		sb_data_q.push_front(
-                    	data_packet_t'({bfm.arg_a, bfm.arg_b, bfm.arg_a_parity, bfm.arg_b_parity, bfm.op_set, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard}));
-                        while(!bfm.result_rdy)@(negedge bfm.clk);
-                    end
-                endcase
-            end
-        end
-    endtask
-
-    protected task process_data_from_dut();
-        forever begin : scoreboard_be_blk
-            @(negedge bfm.clk) ;
-            if(bfm.result_rdy) begin:verify_result
-                data_packet_t dp;
-
-                dp = sb_data_q.pop_back();
-
-                if(dp.op_set !== RST_OP) begin
-	        		if((bfm.result === dp.result) & (bfm.result_parity === dp.result_parity) & (bfm.arg_parity_error === dp.arg_parity_error)) begin
-	           		`ifdef DEBUG
-	            		$display("%0t Test passed for arg_a=%0d, arg_a_parity=%0d, arg_b=%0d, arg_b_parity=%0d, op_set=%0d", $time, dp.arg_a, dp.arg_a_parity, dp.arg_b, dp.arg_b_parity, dp.op_set);
-		        	`endif
-	        		end
-	        	else begin
-	            	tr = TEST_FAILED;
-	            	$error("%0t Test FAILED for arg_a=%0d arg_b=%0d op_set=%0d \n \
-						Expected: %d  received: %d. Expected result_parity: %b  received result_parity: %b. E\
-						xpected arg_parity_error: %b  received arg_parity_error: %b", 
-						$time, dp.arg_a, dp.arg_b, dp.op_set, dp.result, bfm.result, dp.result_parity, bfm.result_parity, dp.arg_parity_error, bfm.arg_parity_error
-	        		);         
-	        	end
-	        	end
-            end
-        end : scoreboard_be_blk
-    endtask
-
-//------------------------------------------------------------------------------
-// build phase
-//------------------------------------------------------------------------------
-    function void build_phase(uvm_phase phase);
-        if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
-            $fatal(1,"Failed to get BFM");
-    endfunction : build_phase
-
-//------------------------------------------------------------------------------
-// run phase
-//------------------------------------------------------------------------------
-    task run_phase(uvm_phase phase);
-        fork
-            store_cmd();
-            process_data_from_dut();
-        join_none
-    endtask : run_phase
+    
 //------------------------------------------------------------------------------
 // print the PASSED/FAILED in color
 //------------------------------------------------------------------------------
@@ -196,6 +52,161 @@ class scoreboard extends uvm_component;
             $write ("\n");
         end
     endfunction
+//------------------------------------------------------------------------------
+// calculate expected result
+//------------------------------------------------------------------------------
+	protected function bit get_expected_error(
+			input operation_t	op_set
+		);
+	
+	`ifdef DEBUG
+		$display("%0t DEBUG: get_excepted(%0d,%0d)", $time, arg_a, arg_b);
+	`endif
+				
+		bit	arg_parity_error;
+		
+		case(op_set)
+			VALID_A_B:
+			begin
+				arg_parity_error	= 1'b0;
+			end
+			INVALID_A_B:
+			begin
+				arg_parity_error	= 1'b1;
+			end
+			VALID_A_INVALID_B:
+			begin
+				arg_parity_error	= 1'b1;
+			end
+			VALID_B_INVALID_A:
+			begin
+				arg_parity_error	= 1'b1;
+			end	
+			default:
+			begin
+				$display("%0t INTERNAL ERROR. get_expected: unexpected case argument: %s", $time, op_set);
+				tr = TEST_FAILED;
+			end
+		endcase
+		return arg_parity_error;
+	endfunction : get_expected_error
+	
+protected function int get_expected_result(
+			input shortint	arg_a,
+			input shortint	arg_b,
+			input operation_t	op_set
+		);
+		
+	`ifdef DEBUG
+		$display("%0t DEBUG: get_excepted(%0d,%0d)", $time, arg_a, arg_b);
+	`endif
+			int    	    result;
+		case(op_set)
+			VALID_A_B:
+			begin
+				result	= arg_a * arg_b;
+			end
+			INVALID_A_B:
+			begin
+				result				= 32'b0;
+			end
+			VALID_A_INVALID_B:
+			begin
+				result				= 32'b0;
+			end
+			VALID_B_INVALID_A:
+			begin
+				result				= 32'b0;
+			end	
+			default:
+			begin
+				$display("%0t INTERNAL ERROR. get_expected: unexpected case argument: %s", $time, op_set);
+				tr = TEST_FAILED;
+			end
+		endcase
+		return result;
+endfunction : get_expected_result
+
+protected function bit get_expected_parity(
+			input int	res,
+			input operation_t	op_set
+		);
+	
+	`ifdef DEBUG
+		$display("%0t DEBUG: get_excepted(%0d,%0d)", $time, arg_a, arg_b);
+	`endif
+		
+		bit			result_parity;
+	
+		case(op_set)
+			VALID_A_B:
+			begin
+				result_parity    	= ^res;
+			end
+			INVALID_A_B:
+			begin
+				result_parity    	= ^res;
+			end
+			VALID_A_INVALID_B:
+			begin
+				result_parity    	= ^res;
+			end
+			VALID_B_INVALID_A:
+			begin
+				result_parity    	= ^res;
+			end	
+			default:
+			begin
+				$display("%0t INTERNAL ERROR. get_expected: unexpected case argument: %s", $time, op_set);
+				tr = TEST_FAILED;
+			end
+		endcase
+		return result_parity;
+endfunction : get_expected_parity
+//------------------------------------------------------------------------------
+// build phase
+//------------------------------------------------------------------------------
+    function void build_phase(uvm_phase phase);
+        cmd_f = new ("cmd_f", this);
+    endfunction : build_phase
+
+//------------------------------------------------------------------------------
+// subscriber write function
+//------------------------------------------------------------------------------
+    function void write(results_s t);
+	    int result_scoreboard;
+	    bit result_parity_scoreboard;
+	    bit arg_parity_error_scoreboard;
+	    
+        command_s cmd;
+	    
+        cmd.arg_a        = 0;
+	    cmd.arg_b        = 0;
+        cmd.op           = RST_OP;
+
+        case(cmd.op)
+    		VALID_A_B, INVALID_A_B, VALID_B_INVALID_A, VALID_A_INVALID_B: begin
+        		result_scoreboard = get_expected_result(cmd.arg_a, cmd.arg_b, cmd.op);
+	    		result_parity_scoreboard = get_expected_parity(result_scoreboard, cmd.op);
+	    		arg_parity_error_scoreboard = get_expected_error(cmd.op);
+            end
+        endcase
+        
+		if(cmd.op !== RST_OP) begin
+	        if((t.result == result_scoreboard) && (t.result_parity == result_parity_scoreboard) && (t.arg_parity_error == arg_parity_error_scoreboard)) begin
+           		`ifdef DEBUG
+            		$display("%0t Test passed for arg_a=%0d, arg_a_parity=%0d, arg_b=%0d, arg_b_parity=%0d, op_set=%0d", $time, cmd.arg_a, cmd.arg_a_parity, cmd.arg_b, cmd.arg_b_parity, cmd.op);
+	        	`endif
+	        end
+	        else begin
+	            tr = TEST_FAILED;
+	            $error("%0t Test FAILED for arg_a=%0d arg_b=%0d op_set=%0d \n \
+						Expected: %d. Expected result_parity: %b Expected arg_parity_error: %b", 
+						$time, cmd.arg_a, cmd.arg_b, cmd.op, result_scoreboard, result_parity_scoreboard, arg_parity_error_scoreboard);         
+	        	end
+	    end
+    endfunction : write
+
 
 //------------------------------------------------------------------------------
 // report phase
