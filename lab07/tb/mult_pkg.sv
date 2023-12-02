@@ -12,22 +12,6 @@ package mult_pkg;
 	    VALID_A_INVALID_B 	= 3'b011,
 	    VALID_B_INVALID_A 	= 3'b100
 	} operation_t;
-
-    // MULT data packet
-    typedef struct packed {
-	    bit			arg_a_parity;
-	    bit 		arg_b_parity;
-        shortint	arg_a;
-        shortint	arg_b;
-        operation_t op;
-    } command_s;
-
-    // Results data packet
-    typedef struct packed {
-        int			result;
-		bit			result_parity;
-		bit			arg_parity_error;
-    } results_s;
 	
 	typedef enum {
         COLOR_BOLD_BLACK_ON_GREEN,
@@ -58,10 +42,11 @@ package mult_pkg;
 	//------------------------------------------------------------------------------
 	// testbench classes
 	//------------------------------------------------------------------------------
+	`include "command_transaction.svh"
+	`include "corners_transaction.svh"
+	`include "result_transaction.svh"
 	`include "coverage.svh"
-	`include "base_tpgen.svh"
-	`include "random_tpgen.svh"
-	`include "corners_tpgen.svh"
+	`include "tpgen.svh"
 	
 	`include "scoreboard.svh"
 	`include "driver.svh"

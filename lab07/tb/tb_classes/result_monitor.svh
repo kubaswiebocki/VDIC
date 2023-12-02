@@ -5,7 +5,7 @@ class result_monitor extends uvm_component;
 // local variables
 //------------------------------------------------------------------------------
     protected virtual mult_bfm bfm;
-    uvm_analysis_port #(results_s) ap;
+    uvm_analysis_port #(result_transaction) ap;
 
 //------------------------------------------------------------------------------
 // constructor
@@ -15,26 +15,26 @@ class result_monitor extends uvm_component;
     endfunction : new
 
 //------------------------------------------------------------------------------
-// monitoring function called from BFM
-//------------------------------------------------------------------------------
-    function void write_to_monitor(results_s r);
-        `ifdef DEBUG
-        $display ("RESULT MONITOR: arg_parity_error: %0d, result=%0d, result_parity=%0d",r.arg_parity_error, r.result, r.result_parity);
-        `endif
-        ap.write(r);
-    endfunction : write_to_monitor
-
-//------------------------------------------------------------------------------
 // build phase
 //------------------------------------------------------------------------------
     function void build_phase(uvm_phase phase);
         if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
-            $fatal(1, "Failed to get BFM");
+            `uvm_fatal("RESULT MONITOR", "Failed to get BFM")
         bfm.result_monitor_h = this;
         ap                   = new("ap",this);
     endfunction : build_phase
 
-
+//------------------------------------------------------------------------------
+// monitoring function called from BFM
+//------------------------------------------------------------------------------
+    function void write_to_monitor(int result, bit result_parity, bit arg_parity_error);
+        result_transaction result_t;
+        result_t        = new("result_t");
+        result_t.result = result;
+	    result_t.result_parity = result_parity;
+	    result_t.arg_parity_error = arg_parity_error;
+        ap.write(result_t);
+    endfunction : write_to_monitor
 
 endclass : result_monitor
 

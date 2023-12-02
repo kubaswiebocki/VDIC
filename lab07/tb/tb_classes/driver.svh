@@ -5,7 +5,7 @@ class driver extends uvm_component;
 // local variables
 //------------------------------------------------------------------------------
     protected virtual mult_bfm bfm;
-    uvm_get_port #(command_s) command_port;
+    uvm_get_port #(command_transaction) command_port;
 	
 //------------------------------------------------------------------------------
 // constructor
@@ -19,7 +19,7 @@ class driver extends uvm_component;
 //------------------------------------------------------------------------------
     function void build_phase(uvm_phase phase);
         if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
-            $fatal(1, "Failed to get BFM");
+            `uvm_fatal("DRIVER", "Failed to get BFM")
         command_port = new("command_port",this);
     endfunction : build_phase
     
@@ -27,7 +27,7 @@ class driver extends uvm_component;
 // run phase
 //------------------------------------------------------------------------------
     task run_phase(uvm_phase phase);
-        command_s command;
+        command_transaction command;
 	    bit arg_a_parity;
 	    bit arg_b_parity;
         forever begin : command_loop

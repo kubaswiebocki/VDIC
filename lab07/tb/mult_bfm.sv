@@ -98,22 +98,16 @@ endtask : send_op
 //------------------------------------------------------------------------------
 
 always @(posedge clk) begin : op_monitor
-    command_s command;
+    command_transaction command;
     if (req) begin : start_high
-        command.arg_a  = arg_a;
-        command.arg_b  = arg_b;
-	    command.arg_a_parity = arg_a_parity;
-	    command.arg_b_parity = arg_b_parity;
-        command.op = op_set;
-        command_monitor_h.write_to_monitor(command);
+        command_monitor_h.write_to_monitor(arg_a, arg_b, arg_a_parity, arg_b_parity, op_set);
     end : start_high
 end : op_monitor
 
 always @(negedge rst_n) begin : rst_monitor
-    command_s command;
-    command.op = RST_OP;
+    command_transaction command;
     if (command_monitor_h != null) //guard against VCS time 0 negedge
-        command_monitor_h.write_to_monitor(command);
+        command_monitor_h.write_to_monitor(arg_a,arg_b,arg_a_parity,arg_b_parity,RST_OP);
 end : rst_monitor
 
 
@@ -122,14 +116,10 @@ end : rst_monitor
 //------------------------------------------------------------------------------
 
 initial begin : result_monitor_thread
-	results_s res;
     forever begin
         @(posedge clk) ;
         if (result_rdy) begin
-	        res.arg_parity_error = arg_parity_error;
-	        res.result_parity = result_parity;
-	        res.result = result;
-            result_monitor_h.write_to_monitor(res);
+            result_monitor_h.write_to_monitor(result, result_parity, arg_parity_error);
 	    end
     end
 end : result_monitor_thread
