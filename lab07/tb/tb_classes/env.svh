@@ -38,12 +38,7 @@ class env extends uvm_env;
     function void connect_phase(uvm_phase phase);
         driver_h.command_port.connect(command_f.get_export);
         tpgen_h.command_port.connect(command_f.put_export);
-
         command_monitor_h.ap.connect(coverage_h.analysis_export);
-//      We could also connect the coverage directly to the command fifo instead,
-//      skipping the command monitor
-//        command_f.put_ap.connect(coverage_h.analysis_export);
-
         command_monitor_h.ap.connect(scoreboard_h.cmd_f.analysis_export);
         result_monitor_h.ap.connect(scoreboard_h.analysis_export);
     endfunction : connect_phase

@@ -28,9 +28,9 @@ class result_monitor extends uvm_component;
 // monitoring function called from BFM
 //------------------------------------------------------------------------------
     function void write_to_monitor(int result, bit result_parity, bit arg_parity_error);
-        result_transaction result_t;
-        result_t        = new("result_t");
-        result_t.result = result;
+	    result_transaction result_t;
+	    result_t  = new("result_t");
+	    result_t.result = result;
 	    result_t.result_parity = result_parity;
 	    result_t.arg_parity_error = arg_parity_error;
         ap.write(result_t);

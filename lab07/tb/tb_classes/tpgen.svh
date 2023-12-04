@@ -34,12 +34,14 @@ class tpgen extends uvm_component;
 	    
 	    command = command_transaction::type_id::create("command"); 
 	    repeat (5000) begin : random_loop
-            if(command.randomize());
+            assert(command.randomize());
             command_port.put(command);
 	    end : random_loop
 	    
 	    command    = new("command");
 	    command.op = RST_OP;
+	    command.arg_a = 16'hFFFF;
+	    command.arg_b = 16'hFFFF;
 	    command_port.put(command);
 	    
 	    #500;

@@ -34,7 +34,7 @@ class result_transaction extends uvm_transaction;
 
     function string convert2string();
         string s;
-        s = $sformatf("result: %4h",result);
+        s = $sformatf("result: %d, result par: %d arg_error: %d ",result, result_parity, arg_parity_error);
         return s;
     endfunction : convert2string
 
@@ -47,7 +47,8 @@ class result_transaction extends uvm_transaction;
         same = super.do_compare(rhs, comparer);
 
         $cast(RHS, rhs);
-        same = (result == RHS.result) && (result_parity == RHS.result_parity) && (arg_parity_error == RHS.arg_parity_error) && same;
+        same = (result == RHS.result) && (result_parity == RHS.result_parity) && 
+        		(arg_parity_error == RHS.arg_parity_error) && same;
         return same;
     endfunction : do_compare
 

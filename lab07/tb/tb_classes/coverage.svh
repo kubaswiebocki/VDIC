@@ -1,7 +1,6 @@
 class coverage extends uvm_subscriber #(command_transaction);
     `uvm_component_utils(coverage)
     
-
 	protected shortint          arg_a;
 	protected bit				arg_a_parity;
 	protected shortint          arg_b;

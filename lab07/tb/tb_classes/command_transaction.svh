@@ -7,19 +7,17 @@ class command_transaction extends uvm_transaction;
 
     rand shortint arg_a;
     rand shortint arg_b;
-	rand bit	  arg_a_parity;
-	rand bit 	  arg_b_parity;
     rand operation_t op;
-
+	bit arg_a_parity;
+	bit arg_b_parity;
 //------------------------------------------------------------------------------
 // constraints
 //------------------------------------------------------------------------------
 
-    constraint data {
-        arg_a dist {[16'h0000 : 16'hFFFF]:=1};
-        arg_b dist {[16'h0000 : 16'hFFFF]:=1};
-	    op dist {[3'b000 : 3'b111]:=1};
-    }
+//    constraint data {
+//        arg_a dist {[16'h0000 : 16'hFFFF]:=1};
+//        arg_b dist {[16'h0000 : 16'hFFFF]:=1};
+//    }
 //------------------------------------------------------------------------------
 // transaction functions: do_copy, clone_me, do_compare, convert2string
 //------------------------------------------------------------------------------
@@ -81,7 +79,7 @@ class command_transaction extends uvm_transaction;
 
     function string convert2string();
         string s;
-        s = $sformatf("argA: %2h  argB: %2h op: %s", arg_a, arg_b, op.name());
+        s = $sformatf("argA: %d  argB: %d argAparity: %d argBparity: %d op: %s", arg_a, arg_b, arg_a_parity, arg_b_parity, op.name());
         return s;
     endfunction : convert2string
 

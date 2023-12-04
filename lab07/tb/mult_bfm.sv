@@ -38,20 +38,6 @@ task reset_mult();
 
 endtask : reset_mult
 
-//Input data parity check
-function bit get_parity(
-		input shortint   data,
-		input bit        data_valid
-	);
-	
-	bit       parity;
-	parity = ^data;
-	
-	if (data_valid == 0)
-		parity = !parity;
-	return parity;
-endfunction : get_parity
-
 //------------------------------------------------------------------------------
 // send_op
 //------------------------------------------------------------------------------
@@ -69,28 +55,29 @@ task send_op(input shortint iArg_a, input shortint iArg_b, input operation_t iop
 	    reset_mult(); 
 	end : case_rst_op_blk
 	VALID_A_B: begin: case_valid_a_b_blk
-	    arg_a_parity = get_parity(arg_a, 1'b1);
-	    arg_b_parity = get_parity(arg_b, 1'b1);
+	    arg_a_parity = ^arg_a;
+	    arg_b_parity = ^arg_b;
 	end : case_valid_a_b_blk
 	INVALID_A_B: begin: case_invalid_a_b_blk
-	    arg_a_parity = get_parity(arg_a, 1'b0);
-	    arg_b_parity = get_parity(arg_b, 1'b0);
+	    arg_a_parity = !(^arg_a);
+	    arg_b_parity = !(^arg_b);
 	end : case_invalid_a_b_blk
 	VALID_A_INVALID_B: begin: case_vd_a_ivd_b_blk
-	    arg_a_parity = get_parity(arg_a, 1'b1);
-	    arg_b_parity = get_parity(arg_b, 1'b0);
+	    arg_a_parity = ^arg_a;
+	    arg_b_parity = !(^arg_b);
 	end : case_vd_a_ivd_b_blk
 	VALID_B_INVALID_A: begin: case_vd_b_ivd_a_blk
-	    arg_a_parity = get_parity(arg_a, 1'b0);
-	    arg_b_parity = get_parity(arg_b, 1'b1);
+	    arg_a_parity = !(^arg_a);
+	    arg_b_parity = ^arg_b;
 	end : case_vd_b_ivd_a_blk
     endcase // case (op_set)
     
+    @(negedge clk)
     req = 1;
     wait(ack);
     req = 0;
     wait(result_rdy);
-
+    
 endtask : send_op
 
 //------------------------------------------------------------------------------
@@ -98,16 +85,16 @@ endtask : send_op
 //------------------------------------------------------------------------------
 
 always @(posedge clk) begin : op_monitor
-    command_transaction command;
+//    command_transaction command;
     if (req) begin : start_high
         command_monitor_h.write_to_monitor(arg_a, arg_b, arg_a_parity, arg_b_parity, op_set);
     end : start_high
 end : op_monitor
 
 always @(negedge rst_n) begin : rst_monitor
-    command_transaction command;
+//    command_transaction command;
     if (command_monitor_h != null) //guard against VCS time 0 negedge
-        command_monitor_h.write_to_monitor(arg_a,arg_b,arg_a_parity,arg_b_parity,RST_OP);
+        command_monitor_h.write_to_monitor(arg_a,arg_b, arg_a_parity, arg_b_parity, RST_OP);
 end : rst_monitor
 
 
