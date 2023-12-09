@@ -42,23 +42,26 @@ package mult_pkg;
 	//------------------------------------------------------------------------------
 	// testbench classes
 	//------------------------------------------------------------------------------
+	// configs
+	`include "env_config.svh"
+	`include "mult_agent_config.svh"
+
 	`include "command_transaction.svh"
 	`include "corners_transaction.svh"
 	`include "result_transaction.svh"
+	
 	`include "coverage.svh"
 	`include "tpgen.svh"
-	
 	`include "scoreboard.svh"
 	`include "driver.svh"
-	
 	`include "command_monitor.svh"
 	`include "result_monitor.svh"
+	`include "mult_agent.svh"
 	`include "env.svh"
 	
 	//------------------------------------------------------------------------------
 	// test classes
 	//------------------------------------------------------------------------------
-	`include "random_test.svh"
-	`include "corners_test.svh"
+	`include "dual_test.svh"
 
 endpackage : mult_pkg

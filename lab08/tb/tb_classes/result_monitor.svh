@@ -18,9 +18,10 @@ class result_monitor extends uvm_component;
 // build phase
 //------------------------------------------------------------------------------
     function void build_phase(uvm_phase phase);
-        if(!uvm_config_db #(virtual mult_bfm)::get(null, "*","bfm", bfm))
-            `uvm_fatal("RESULT MONITOR", "Failed to get BFM")
-        bfm.result_monitor_h = this;
+	    mult_agent_config agent_config_h;
+        if(!uvm_config_db #(mult_agent_config)::get(this, "","config", agent_config_h))
+            `uvm_fatal("RESULT MONITOR", "Failed to get CONFIG");
+        agent_config_h.bfm.result_monitor_h = this;
         ap                   = new("ap",this);
     endfunction : build_phase
 

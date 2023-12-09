@@ -5,8 +5,8 @@ class corners_transaction extends command_transaction;
 // constraints
 //------------------------------------------------------------------------------
     constraint data {
-        arg_a dist {16'sh0000:=2, 16'sh0001:=2, 16'sh7FFF:=2,  16'shFFFF:=2, 16'sh8000:=2};
-        arg_b dist {16'sh0000:=2, 16'sh0001:=2, 16'sh7FFF:=2,  16'shFFFF:=2, 16'sh8000:=2};
+        arg_a dist {16'sh0000:=1, 16'sh0001:=1, 16'sh7FFF:=1,  16'shFFFF:=1, 16'sh8000:=1};
+        arg_b dist {16'sh0000:=1, 16'sh0001:=1, 16'sh7FFF:=1,  16'shFFFF:=1, 16'sh8000:=1};
     }
     
     

@@ -33,7 +33,12 @@ class tpgen extends uvm_component;
         command_port.put(command);
 	    
 	    command = command_transaction::type_id::create("command"); 
-	    repeat (5000) begin : random_loop
+	    
+	    set_print_color(COLOR_BOLD_BLACK_ON_YELLOW);
+        `uvm_info("TPGEN", $sformatf("*** Created transaction type: %s",command.get_type_name()), UVM_MEDIUM);
+        set_print_color(COLOR_DEFAULT);
+	    
+	    repeat (10000) begin : random_loop
             assert(command.randomize());
             command_port.put(command);
 	    end : random_loop

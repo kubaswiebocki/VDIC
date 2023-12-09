@@ -1,4 +1,5 @@
 mult_pkg.sv
+mult_tpgen_module.sv
 mult_bfm.sv
 -F ../../common/vdic_dut_2023.f
 top.sv
