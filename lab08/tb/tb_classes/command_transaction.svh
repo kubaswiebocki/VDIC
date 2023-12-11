@@ -10,6 +10,12 @@ class command_transaction extends uvm_transaction;
     rand operation_t op;
 	bit arg_a_parity;
 	bit arg_b_parity;
+	
+	
+	constraint data {
+        arg_a dist {16'sh0000:=1, 16'sh0001:=5, 16'sh7FFF:=3,  16'shFFFF:=1, 16'sh8000:=3, [16'sh0002:16'sh7FFE], [16'sh8001:16'shFFFE]};
+        arg_b dist {16'sh0000:=1, 16'sh0001:=7, 16'sh7FFF:=3,  16'shFFFF:=1, 16'sh8000:=4, [16'sh0002:16'sh7FFE], [16'sh8001:16'shFFFE]};
+    }
 //------------------------------------------------------------------------------
 // constructor
 //------------------------------------------------------------------------------
